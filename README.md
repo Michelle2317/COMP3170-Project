@@ -10,8 +10,10 @@ React Recipe Website
 - Nathan Schroter
 
 ## How To Run The Application Locally
-Run the following command to download the repo on your machine:
-```npx degit Michelle2317/COMP3170-Project```
+Run the following command to download the repo on your machine
+```
+npx degit Michelle2317/COMP3170-Project
+```
 
 Alternatively, you can download the folder or git clone the repo to your machine
 
