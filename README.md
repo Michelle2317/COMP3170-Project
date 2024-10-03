@@ -6,7 +6,7 @@ React Recipe Website
 ## Created By
 - Michelle Ao
 - Julia Deng
-- Andew Turitsa
+- Andrew Turitsa
 - Nathan Schroter
 
 ## How To Run The Application Locally
