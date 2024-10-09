@@ -1,6 +1,17 @@
 :root {
-  font-family: 'Roboto', sans-serif;
+  --roboto: 'Roboto', sans-serif;
   --rose-gold: #ECC5C2;
   --dark-brown: #1B1817;
   --brown-gray: #9B7F7C;
+  --black: #000000;
+  --white: #FFFFFF;
+  --light-gray: #D3D3D3;
+
+  --h1: 36px;
+  --h2: 32px;
+  --h3: 28px;
+  --h4: 24px;
+  --h5: 20px;
+  --h6: 18px;
+  --body: 16px;
 }
