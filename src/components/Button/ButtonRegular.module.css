@@ -1,0 +1,17 @@
+.buttonRegular {
+	background-color: var(--deep-pink);
+	color: var(--white);
+	font-size: var(--body);
+	border: none;
+	border-radius: 20px;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+.buttonRegular:hover {
+	background-color: var(--brown-gray);
+}
+
+.buttonRegular:active {
+	background-color: var(--blue-black);
+}

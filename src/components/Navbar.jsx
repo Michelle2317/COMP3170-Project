@@ -9,10 +9,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const pages = [
+  { name: 'Recipes', path: '/recipes' },
   { name: 'Breakfast', path: '/breakfast' },
   { name: 'Lunch', path: '/lunch' },
   { name: 'Dinner', path: '/dinner' },
   { name: 'Cuisines', path: '/cuisines' },
+  { name: 'Add Recipe', path: '/addrecipe' },
 ];
 
 const Search = styled('div')(({ theme }) => ({
@@ -25,7 +27,7 @@ const Search = styled('div')(({ theme }) => ({
     backgroundColor: 'var(--light-gray)',
   },
   '&:focus-within': {
-    border: '2px solid var(--rose-gold)',
+    border: '3.5px solid var(--deep-pink)',
   },
   marginRight: theme.spacing(4),
   marginLeft: 0,
@@ -181,7 +183,7 @@ export default function Navbar() {
                 fontSize: 'var(--h6)',
                 '&:hover': {
                   color: 'var(--white)',
-                  backgroundColor: 'var(--rose-gold)',
+                  backgroundColor: 'var(--deep-pink)',
                 },
               }}
             >
@@ -205,28 +207,9 @@ export default function Navbar() {
 
         {/* Profile Icon */}
         <Box sx={{ flexGrow: 0 }}>
-          <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+          <IconButton sx={{ p: 0, '&:hover .MuiSvgIcon-root': { color: 'var(--deep-pink)' } }}>
             <AccountCircleIcon sx={{ color: 'var(--black)' }} fontSize="large" />
           </IconButton>
-          <Menu
-            sx={{ mt: '45px' }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
-          >
-            <MenuItem onClick={handleCloseUserMenu}>My Account</MenuItem>
-            <MenuItem onClick={handleCloseUserMenu}>Upload New Recipe</MenuItem>
-          </Menu>
         </Box>
       </Toolbar>
     </AppBar>
