@@ -13,11 +13,11 @@ export default function Home() {
                                         <p>Delicious meals for every occasion</p>
                                         <a href="#somethingNew"><Button text="Explore Recipe" /></a>
                                 </div>
-                                        <img className="heroImage" src="src/assets/images/pasta.jpg" alt="Pesto Farfalle" />
+                                        <img className="heroImage" src="./assets/images/pasta.jpg" alt="Pesto Farfalle" />
                         </div>
 
                         <div className="shareContainer">
-                                <img className="shareImage" src="src/assets/images/pasta.jpg" alt="Pesto Farfalle" />
+                                <img className="shareImage" src="./assets/images/pasta.jpg" alt="Pesto Farfalle" />
                                 <div className="shareText">
                                         <h2>Share Your <span style={{ color: 'var(--deep-pink)'}}>Recipes</span></h2>
                                                 <p>
@@ -57,32 +57,32 @@ export default function Home() {
                                 <RecipeCard
                                         title="Pesto Farfalle"
                                         description="Pasta"
-                                        image="src/assets/images/pasta.jpg"
+                                        image="./assets/images/pasta.jpg"
                                 />
                                 <RecipeCard
                                         title="Pesto Farfalle"
                                         description="Pasta"
-                                        image="src/assets/images/pasta.jpg"
+                                        image="./assets/images/pasta.jpg"
                                 />
                                 <RecipeCard
                                         title="Pesto Farfalle"
                                         description="Pasta"
-                                        image="src/assets/images/pasta.jpg"
+                                        image="./assets/images/pasta.jpg"
                                 />
                                 <RecipeCard
                                         title="Pesto Farfalle"
                                         description="Pasta"
-                                        image="src/assets/images/pasta.jpg"
+                                        image="./assets/images/pasta.jpg"
                                 />
                                 <RecipeCard
                                         title="Pesto Farfalle"
                                         description="Pasta"
-                                        image="src/assets/images/pasta.jpg"
+                                        image="./assets/images/pasta.jpg"
                                 />
                                 <RecipeCard
                                         title="Pesto Farfalle"
                                         description="Pasta"
-                                        image="src/assets/images/pasta.jpg"
+                                        image="./assets/images/pasta.jpg"
                                 />
                         </div>
                 </>
