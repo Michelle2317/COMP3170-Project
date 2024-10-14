@@ -11,6 +11,7 @@ import Cuisines from './pages/Cuisines';
 import Profile from './pages/Profile';
 import AddRecipe from './pages/AddRecipe';
 
+
 function App() {
   return (
     <>
