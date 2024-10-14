@@ -207,9 +207,11 @@ export default function Navbar() {
 
         {/* Profile Icon */}
         <Box sx={{ flexGrow: 0 }}>
-          <IconButton sx={{ p: 0, '&:hover .MuiSvgIcon-root': { color: 'var(--deep-pink)' } }}>
-            <AccountCircleIcon sx={{ color: 'var(--black)' }} fontSize="large" />
-          </IconButton>
+          <Link to="/profile">
+            <IconButton sx={{ p: 0, '&:hover .MuiSvgIcon-root': { color: 'var(--deep-pink)' } }}>
+              <AccountCircleIcon sx={{ color: 'var(--black)' }} fontSize="large" />
+            </IconButton>
+          </Link>
         </Box>
       </Toolbar>
     </AppBar>

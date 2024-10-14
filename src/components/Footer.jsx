@@ -1,9 +1,10 @@
-import { Box, Typography, Link, Grid } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 import AdbIcon from '@mui/icons-material/Adb';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -11,7 +12,7 @@ export default function Footer() {
       <Box sx={{ width: '100%', maxWidth: '1200px' }}>
         <Grid container spacing={4} justifyContent="flex-start">
           <Grid item xs={12} sm={4}>
-            <Link href="/home" sx={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <Link to="/home" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
               <AdbIcon sx={{ fontSize: 45, color: 'var(--deep-pink)' }} />
             </Link>            
             <Typography variant="body2" sx={{ marginTop: '0.5rem', color: 'text.secondary' }}>
@@ -26,16 +27,16 @@ export default function Footer() {
             <Typography variant="h6">Useful Links</Typography>
             <Grid container spacing={2} sx={{ marginTop: '0.5rem' }}>
               <Grid item xs={6}>
-                <Link href="/home" sx={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>Home</Link>
-                <Link href="/recipes" sx={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>Recipes</Link>
-                <Link href="/breakfast" sx={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>Breakfast</Link>
-                <Link href="/lunch" sx={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>Lunch</Link>
+                <Link to="/home" style={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>Home</Link>
+                <Link to="/recipes" style={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>Recipes</Link>
+                <Link to="/breakfast" style={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>Breakfast</Link>
+                <Link to="/lunch" style={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>Lunch</Link>
               </Grid>
               <Grid item xs={6}>
-                <Link href="/dinner" sx={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>Dinner</Link>
-                <Link href="/cuisines" sx={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>Cuisines</Link>
-                <Link href="/addrecipe" sx={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>Add Recipe</Link>
-                <Link href="/profile" sx={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>Profile</Link>
+                <Link to="/dinner" style={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>Dinner</Link>
+                <Link to="/cuisines" style={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>Cuisines</Link>
+                <Link to="/addrecipe" style={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>Add Recipe</Link>
+                <Link to="/profile" style={{ display: 'block', textDecoration: 'none', color: 'inherit', margin: '0.2rem 0', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>Profile</Link>
               </Grid>
             </Grid>
           </Grid>
@@ -43,18 +44,18 @@ export default function Footer() {
           <Grid item xs={12} sm={4}>
             <Typography variant="h6">Follow Us On</Typography>
             <Box display="flex" justifyContent="flex-start" gap={2} sx={{ marginTop: '0.5rem' }}>
-              <Link href="#instagram" color="text.primary" sx={{ display: 'flex', alignItems: 'center', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>
+              <a href="#instagram" style={{ color: 'inherit', display: 'flex', alignItems: 'center', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>
                 <InstagramIcon />
-              </Link>
-              <Link href="#facebook" color="text.primary" sx={{ display: 'flex', alignItems: 'center', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>
+              </a>
+              <a href="#facebook" style={{ color: 'inherit', display: 'flex', alignItems: 'center', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>
                 <FacebookIcon />
-              </Link>
-              <Link href="#twitter" color="text.primary" sx={{ display: 'flex', alignItems: 'center', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>
+              </a>
+              <a href="#twitter" style={{ color: 'inherit', display: 'flex', alignItems: 'center', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>
                 <TwitterIcon />
-              </Link>
-              <Link href="#linkedin" color="text.primary" sx={{ display: 'flex', alignItems: 'center', '&:hover': { color: 'var(--deep-pink)' }, '&:active': { color: 'var(--brown-gray)' } }}>
+              </a>
+              <a href="#linkedin" style={{ color: 'inherit', display: 'flex', alignItems: 'center', ':hover': { color: 'var(--deep-pink)' }, ':active': { color: 'var(--brown-gray)' } }}>
                 <LinkedInIcon />
-              </Link>
+              </a>
             </Box>
           </Grid>
         </Grid>
