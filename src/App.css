@@ -68,3 +68,22 @@ body {
 	padding: 0 10px;
 	margin-bottom: 6rem;
 }
+
+.RecipeDetailsInfo{
+	margin-left: 2em;
+}
+
+.recipeDesc{
+	box-sizing: border-box;
+	color: inherit;
+	font-family: var(--roboto);
+	margin-left: 1em;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	margin-right: 20em;
+}
+
+.recipeDetailsImg{
+	width: 22rem;
+	height: 22rem;
+}

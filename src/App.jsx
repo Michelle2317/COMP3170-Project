@@ -10,6 +10,8 @@ import Dinner from './pages/Dinner';
 import Cuisines from './pages/Cuisines';
 import Profile from './pages/Profile';
 import AddRecipe from './pages/AddRecipe';
+import RecipeDetails from './pages/RecipeDetails';
+
 
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
                 <Route path="/cuisines" element={<Cuisines />} />
                 <Route path="/addrecipe" element={<AddRecipe />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/recipe-details" element={<RecipeDetails />} />
+
               </Routes>
               <Footer />  
           </Router>

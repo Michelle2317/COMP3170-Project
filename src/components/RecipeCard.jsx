@@ -4,15 +4,22 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
+import { useNavigate } from 'react-router-dom';
 
-export default function RecipeCard({ title, description, image, className}) {
+export default function RecipeCard({ title, description, image, className }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/recipe-details');
+  };
+
   return (
-    <Card className={className} sx={{ maxWidth: 310 }}>
+    <Card className={className} sx={{ maxWidth: 310 }} onClick={handleClick}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="190"
-          image={image}          
+          image={image}
           alt={title}
         />
         <CardContent>
