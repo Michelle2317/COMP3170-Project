@@ -14,9 +14,22 @@ export default function Footer() {
       <Box sx={{ width: '100%', maxWidth: '1200px' }}>
         <Grid container spacing={4} justifyContent="flex-start">
           <Grid item xs={12} sm={4}>
-            <Link to="/home" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-              <img src={LogoNoText} alt="Logo" style={{ display: { xs: 'none', }, height: '50px',}} /> 
-            </Link>
+          <Link to="/home" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          <img src={LogoNoText} alt="Logo" style={{ display: { xs: 'none' }, height: '50px', margin: "0.5em" }} />
+            <Typography
+                variant="h2"
+                sx={{
+                  fontFamily: "'Caveat', cursive",
+                  fontWeight: 700,
+                  color: 'var(--black)',
+                  fontSize: '2rem', 
+                  marginLeft: '0.5rem'
+                }}
+              >
+                Once Upon a Meal
+            </Typography>
+          </Link>
+
             <Typography variant="body2" sx={{ marginTop: '0.5rem', color: 'text.secondary' }}>
               Discover and share delicious recipes for every occasion.
               Our platform connects a community of food lovers who inspire 

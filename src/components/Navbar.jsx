@@ -98,6 +98,7 @@ export default function Navbar() {
             component="a"
             href="#"
             sx={{
+              fontFamily: "'Caveat', cursive",
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontWeight: 700,
@@ -106,6 +107,7 @@ export default function Navbar() {
               textTransform: 'capitalize',
             }}
           >
+            Once Upon a Meal &nbsp;
           </Typography>
         </Link>
 
@@ -142,6 +144,18 @@ export default function Navbar() {
                 <Typography textAlign="center">
                   <Link to={page.path} style={{ textDecoration: 'none', color: 'inherit', textTransform: 'capitalize' }}>
                     {page.name}
+                      <Typography
+                        variant="h2"
+                        sx={{
+                          fontFamily: "'Caveat', cursive",
+                          fontWeight: 700,
+                          color: 'var(--black)',
+                          fontSize: '2rem', 
+                          marginLeft: '0.5rem'
+                        }}
+                      >
+                        Once Upon a Meal
+                    </Typography>
                   </Link>
                 </Typography>
               </MenuItem>
