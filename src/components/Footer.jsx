@@ -1,10 +1,12 @@
 import { Box, Typography, Grid } from '@mui/material';
-import AdbIcon from '@mui/icons-material/Adb';
+// import AdbIcon from '@mui/icons-material/Adb';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Link } from 'react-router-dom';
+
+import LogoNoText from './LogoNoText.svg';
 
 export default function Footer() {
   return (
@@ -13,7 +15,7 @@ export default function Footer() {
         <Grid container spacing={4} justifyContent="flex-start">
           <Grid item xs={12} sm={4}>
             <Link to="/home" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-              <AdbIcon sx={{ fontSize: 45, color: 'var(--deep-pink)' }} />
+              <img src={LogoNoText} alt="Logo" style={{ display: { xs: 'none', }, height: '50px',}} /> 
             </Link>
             <Typography variant="body2" sx={{ marginTop: '0.5rem', color: 'text.secondary' }}>
               Discover and share delicious recipes for every occasion.

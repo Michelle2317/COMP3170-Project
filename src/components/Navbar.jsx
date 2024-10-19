@@ -4,9 +4,10 @@ import { AppBar, Box, Toolbar, IconButton, Typography, Button, Menu, MenuItem, I
 import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
+import LogoNoText from './LogoNoText.svg';
 
 const pages = [
   { name: 'Recipes', path: '/recipes' },
@@ -90,7 +91,7 @@ export default function Navbar() {
       <Toolbar>
         {/* Logo */}
         <Link to="/home" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'var(--black)' }}>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'var(--black)' }} />
+          <img src={LogoNoText} alt="Logo" style={{ display: { xs: 'none', md: 'flex' }, height: '40px', marginRight: '8px' }} />
           <Typography
             variant="h6"
             noWrap
@@ -149,7 +150,7 @@ export default function Navbar() {
         </Box>
 
         {/* Mobile Logo */}
-        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+        {/* <img src={LogoNoText} alt="Logo" style={{ display: { xs: 'flex', md: 'none' }, height: '30px', marginRight: '8px' }} /> */}
         <Typography
           variant="h5"
           noWrap
