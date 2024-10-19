@@ -87,3 +87,64 @@ body {
 	width: 22rem;
 	height: 22rem;
 }
+
+/*Recipe List*/
+
+.RecipeLists {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1em;
+	min-width: 60vw;
+}
+
+.RecipeListLayout {
+	display: flex;
+	margin-bottom: 5em;
+}
+
+.Filter {
+	display: flex;
+	flex-direction: column;
+	min-width: 20vw;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+.FilterText {
+	font-size: x-large;
+}
+
+.filterDetails {
+	border: 1px solid var(--deep-pink);
+}
+
+.filterSummary {
+	font-size: x-large;
+	padding: 0.5em;
+	color: var(--deep-pink);
+}
+
+.checkBox {
+	padding-left: 1em;
+	padding-right: 1em;
+	position: relative;
+	left: 14px
+}
+
+.checkBox:hover {
+	background-color: var(--light-gray);
+}
+
+.RecommendedRecipes {
+	min-width: 15vw;
+	margin: 1em;
+	margin-top: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.PageHeading {
+	padding-left: 2em;
+}

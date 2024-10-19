@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import { useNavigate } from 'react-router-dom';
 
-export default function RecipeCard({ title, description, image, className }) {
+export default function RecipeCard({ title, description, image, className, time }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -25,6 +25,7 @@ export default function RecipeCard({ title, description, image, className }) {
         <CardContent>
           <Typography gutterBottom variant="p" component="div">{description}</Typography>
           <Typography variant="h6" sx={{ color: 'var(--black)' }}>{title}</Typography>
+          <Typography variant="p" sx={{ color: 'var(--gray)' }}>{time}</Typography>
         </CardContent>
       </CardActionArea>
     </Card>
