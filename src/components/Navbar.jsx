@@ -7,8 +7,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-import LogoNoText from './LogoNoText.svg';
-
 const pages = [
   { name: 'Recipes', path: '/recipes' },
   { name: 'Breakfast', path: '/breakfast' },
@@ -91,7 +89,7 @@ export default function Navbar() {
       <Toolbar>
         {/* Logo */}
         <Link to="/home" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'var(--black)' }}>
-          <img src={LogoNoText} alt="Logo" style={{ display: { xs: 'none', md: 'flex' }, height: '40px', marginRight: '8px' }} />
+          <img src="./favicon.svg" alt="Logo" style={{ display: { xs: 'none', md: 'flex' }, height: '40px', marginRight: '8px' }} />
           <Typography
             variant="h6"
             noWrap
