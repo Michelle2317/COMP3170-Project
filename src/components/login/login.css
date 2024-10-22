@@ -1,0 +1,22 @@
+.mainContainer{
+    background-color: #fda500; 
+ }
+ 
+ form{
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column; 
+     width: 50%;
+     gap: 3rem;
+     
+ }
+ form div{
+     width: fit-content;
+     margin: 0 auto;
+     text-align: left;
+     margin-bottom: 40px;
+ }
+ 
+ h1{
+     text-align: center;
+ }

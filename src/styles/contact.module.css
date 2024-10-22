@@ -1,0 +1,7 @@
+.mainContainer{
+    display: flex;
+    justify-content: center;
+}
+.mainContainer h1{
+    font-size: var(--font-h1);
+}

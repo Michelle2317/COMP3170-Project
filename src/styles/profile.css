@@ -1,0 +1,52 @@
+.mainContainer{
+display: flex;
+padding: 50px;
+}
+
+.image{
+    /* background-color: yellow; */
+    width: fit-content;
+    height: 700px;
+}
+.image img{
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 20px 20px 20px 20px;
+    margin-top: 100px;
+}
+.information{
+    width: 100%;
+    margin-left: 100px;
+    gap: 1rem;
+}
+.information h1{
+/* text-align: center; */
+font-size: 70px;
+}
+.information h2{
+    margin-top: 50px;
+}
+.information span{
+    color: lightgray;
+    display: flex;
+    opacity: 50%;
+}
+.recipes{
+   width: 100%;
+}
+.recipes h1{
+    font-size: 70px;
+}
+.recipes img{
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+
+}
+.recipesImages{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
