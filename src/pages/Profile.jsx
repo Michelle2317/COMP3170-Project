@@ -1,4 +1,4 @@
-import "../../styles/profile.css";
+import "../styles/recipeForm.css";
 export default function Profile() {
   return (
     <>
