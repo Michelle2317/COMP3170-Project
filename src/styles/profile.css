@@ -4,7 +4,6 @@ padding: 50px;
 }
 
 .image{
-    /* background-color: yellow; */
     width: fit-content;
     height: 700px;
 }
@@ -22,7 +21,6 @@ padding: 50px;
     gap: 1rem;
 }
 .information h1{
-/* text-align: center; */
 font-size: 70px;
 }
 .information h2{
@@ -50,3 +48,17 @@ font-size: 70px;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
 }
+.save-button {
+    display: flex;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .save-button:hover {
+    background-color: #45a049;
+  }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-// import "../../styles/recipeForm.css";
+import "../styles/recipeForm.css";
+
 
 const RecipeForm = () => {
   const [coverPhoto, setCoverPhoto] = useState(null);
@@ -8,17 +9,43 @@ const RecipeForm = () => {
   const [timeToCook, setTimeToCook] = useState(30);
   const [mealType, setMealType] = useState("Breakfast");
   const [ethnicity, setEthnicity] = useState("");
+  const [error, setError] = useState("");
 
   const handlePhotoUpload = (e) => {
     const file = e.target.files[0];
     setCoverPhoto(URL.createObjectURL(file));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name || !ethnicity) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+    setError("");
+    alert("Recipe submitted successfully!");
+    setCoverPhoto(null);
+    setName("");
+    setDescription("");
+    setTimeToCook(30);
+    setMealType("Breakfast");
+    setEthnicity("");
+  };
+
   return (
-    <div className="recipe-form">
+    <form className="recipe-form" onSubmit={handleSubmit}>
       <div className="upload-cover">
         {coverPhoto ? (
-          <img src={coverPhoto} alt="Cover" className="cover-photo" />
+          <div className="cover-preview">
+            <img src={coverPhoto} alt="Cover" className="cover-photo" />
+            <button
+              type="button"
+              className="remove-cover"
+              onClick={() => setCoverPhoto(null)}
+            >
+              Remove
+            </button>
+          </div>
         ) : (
           <label className="upload-button">
             <input type="file" onChange={handlePhotoUpload} />
@@ -28,7 +55,7 @@ const RecipeForm = () => {
       </div>
       
       <div className="form-group">
-        <label>Name</label>
+        <label>Name*</label>
         <input
           type="text"
           value={name}
@@ -52,6 +79,7 @@ const RecipeForm = () => {
           type="range"
           min="10"
           max="120"
+          step="10"
           value={timeToCook}
           onChange={(e) => setTimeToCook(e.target.value)}
         />
@@ -68,7 +96,7 @@ const RecipeForm = () => {
       </div>
 
       <div className="form-group">
-        <label>Ethnicity</label>
+        <label>Ethnicity*</label>
         <input
           type="text"
           value={ethnicity}
@@ -76,7 +104,13 @@ const RecipeForm = () => {
           placeholder="Enter ethnicity (e.g., Italian, Thai)"
         />
       </div>
-    </div>
+
+      {error && <p className="error-message">{error}</p>}
+
+      <button type="submit" className="submit-button">
+        Submit Recipe
+      </button>
+    </form>
   );
 };
 
