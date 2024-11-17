@@ -9,6 +9,7 @@ import TopPicks from './pages/TopPicks';
 import Profile from './pages/Profile';
 import AddRecipe from './pages/AddRecipe';
 import RecipeDetails from './pages/RecipeDetails';
+import SearchResults from './pages/SearchResults';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
                 <Route path="/occasions" element={<Occasions />} />
                 <Route path="/addrecipe" element={<AddRecipe />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/recipe-details" element={<RecipeDetails />} />
+                <Route path="/search-results" element={<SearchResults />} />
+                <Route path="/recipe/:id" element={<RecipeDetails />} />
               </Routes>
               <Footer />  
           </Router>

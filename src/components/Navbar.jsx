@@ -12,7 +12,7 @@ import {
 	InputBase,
 } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -75,7 +75,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Navbar() {
 	const [anchorElNav, setAnchorElNav] = useState(null);
 	const [anchorElUser, setAnchorElUser] = useState(null);
+	const [searchName, setsearchName] = useState('');
+	const navigate = useNavigate();
 
+	const handleSearch = async (e) => {
+		e.preventDefault();
+		if (searchName.trim()) {
+			navigate(`/search-results?query=${searchName}`);
+		}
+	};
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
 	};
@@ -233,7 +241,6 @@ export default function Navbar() {
 				</Box>
 
 				{/* Mobile Logo */}
-				{/* <img src={LogoNoText} alt="Logo" style={{ display: { xs: 'flex', md: 'none' }, height: '30px', marginRight: '8px' }} /> */}
 				<Typography
 					variant='h5'
 					noWrap
@@ -298,17 +305,27 @@ export default function Navbar() {
 				</Box>
 
 				{/* Search Bar */}
-				<Search>
-					<SearchIconWrapper>
-						<SearchIcon />
-					</SearchIconWrapper>
-					<StyledInputBase
-						placeholder='Search…'
-						inputProps={{
-							'aria-label': 'search',
-						}}
-					/>
-				</Search>
+				<form onSubmit={handleSearch}>
+					<Search>
+						<SearchIconWrapper>
+							<SearchIcon />
+						</SearchIconWrapper>
+						<StyledInputBase
+							value={searchName}
+							onChange={(e) =>
+								setsearchName(
+									e.target
+										.value
+								)
+							}
+							placeholder='Search…'
+							inputProps={{
+								'aria-label':
+									'search',
+							}}
+						/>
+					</Search>
+				</form>
 
 				{/* Profile Icon */}
 				<Box sx={{ flexGrow: 0 }}>
