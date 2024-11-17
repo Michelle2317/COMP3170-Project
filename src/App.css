@@ -89,7 +89,6 @@ body {
 }
 
 /*Recipe List*/
-
 .RecipeLists {
 	display: flex;
 	flex-wrap: wrap;

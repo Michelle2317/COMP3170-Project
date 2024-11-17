@@ -3,7 +3,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-export default function Cuisines() {
+export default function TopPicks() {
         const recipeInfo =                         
         <RecipeCard
         title="Pasta"
@@ -15,7 +15,7 @@ export default function Cuisines() {
 
 	return (
                 <>
-                        <h1 className="PageHeading">Cuisines</h1>
+                        <h1 className="PageHeading">Top Picks</h1>
                         <div className="RecipeListLayout">
                                 <div className="Filter">
                                         <h2 className="FilterText">Filter:</h2>
