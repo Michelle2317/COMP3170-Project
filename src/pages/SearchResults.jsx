@@ -39,6 +39,7 @@ export default function SearchResults() {
 							sm={4}
 							md={3}
 							key={recipe.idMeal}
+							sx={{ marginRight: -5 }} 
 						>
 							<RecipeCard
 								title={

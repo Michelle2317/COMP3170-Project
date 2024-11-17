@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
 import RecipeCard from '../components/RecipeCard';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Occasions() {
 	const [randomRecipes, setRandomRecipes] = useState([]);
@@ -206,17 +207,67 @@ export default function Occasions() {
 				<div className='RecipeLists'>
 					<div className='recipeGrid'>
 						{loading ? (
-							<div>Loading Recipes...</div>
+							<div>
+								Loading
+								Recipes...
+							</div>
 						) : (
 							randomRecipes.map(
 								(
 									recipe,
 									index
 								) => (
-									<RecipeCard
+									<Link
 										key={
 											index
 										}
+										to={`/recipe/${recipe.idMeal}`}
+										style={{
+											textDecoration:
+												'none',
+										}}
+									>
+										<RecipeCard
+											title={
+												recipe.strMeal
+											}
+											category={
+												recipe.strCategory
+											}
+											image={
+												recipe.strMealThumb
+											}
+											className='recipe-card'
+											time={
+												recipe.strTime ||
+												'Placeholder Time'
+											}
+										/>
+									</Link>
+								)
+							)
+						)}
+					</div>
+				</div>
+
+				<div className='RecommendedRecipes'>
+					<h3>Recommended Recipes:</h3>
+					{loading ? (
+						<div>Loading Recipes...</div>
+					) : (
+						recommendedRecipes.map(
+							(recipe, index) => (
+								<Link
+									key={
+										index
+									}
+									to={`/recipe/${recipe.idMeal}`}
+									style={{
+										textDecoration:
+											'none',
+									}}
+								>
+									<RecipeCard
 										title={
 											recipe.strMeal
 										}
@@ -232,38 +283,7 @@ export default function Occasions() {
 											'Placeholder Time'
 										}
 									/>
-								)
-							)
-						)}
-					</div>
-				</div>
-
-				<div className='RecommendedRecipes'>
-					<h3>Recommended Recipes:</h3>
-					{loading ? (
-						<div>Loading Recipes...</div>
-					) : (
-						recommendedRecipes.map(
-							(recipe, index) => (
-								<RecipeCard
-									key={
-										index
-									}
-									title={
-										recipe.strMeal
-									}
-									category={
-										recipe.strCategory
-									}
-									image={
-										recipe.strMealThumb
-									}
-									className='recipe-card'
-									time={
-										recipe.strTime ||
-										'Placeholder Time'
-									}
-								/>
+								</Link>
 							)
 						)
 					)}

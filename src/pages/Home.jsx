@@ -47,7 +47,7 @@ export default function Home() {
 						occasion
 					</p>
 					<Link to='/recipes'>
-						<Button text='Explore Recipe' />
+						<Button text='Explore Recipes' />
 					</Link>
 				</div>
 				<img
@@ -130,20 +130,30 @@ export default function Home() {
 			<div className='recipeGrid'>
 				{randomRecipes.length > 0 ? (
 					randomRecipes.map((recipe, index) => (
-						<RecipeCard
+						<Link
 							key={index}
-							title={recipe.strMeal}
-							category={
-								recipe.strCategory
-							}
-							image={
-								recipe.strMealThumb
-							}
-							time={
-								recipe.strTime ||
-								'Placeholder Time'
-							}
-						/>
+							to={`/recipe/${recipe.idMeal}`}
+							style={{
+								textDecoration:
+									'none',
+							}}
+						>
+							<RecipeCard
+								title={
+									recipe.strMeal
+								}
+								category={
+									recipe.strCategory
+								}
+								image={
+									recipe.strMealThumb
+								}
+								time={
+									recipe.strTime ||
+									'Placeholder Time'
+								}
+							/>
+						</Link>
 					))
 				) : (
 					<p>Loading Recipes...</p>
