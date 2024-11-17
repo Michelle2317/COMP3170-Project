@@ -52,7 +52,7 @@ export default function RecipeDetails() {
 	};
 
 	if (!recipe) {
-		return <Typography>Loading...</Typography>;
+		return <Typography>Loading Recipes...</Typography>;
 	}
 
 	return (

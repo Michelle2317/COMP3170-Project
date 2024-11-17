@@ -52,6 +52,7 @@ body {
 	width: 22rem;
 	height: 22rem;
 	border-radius: 25px;
+	object-fit: cover;
 }
 
 .somethingNew {

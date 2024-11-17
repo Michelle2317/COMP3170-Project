@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function RecipeCard({
 	title,
-	description,
+	category,
 	image,
 	className,
 	time,
@@ -38,7 +38,7 @@ export default function RecipeCard({
 						variant='p'
 						component='div'
 					>
-						{description}
+						{category}
 					</Typography>
 					<Typography
 						variant='h6'

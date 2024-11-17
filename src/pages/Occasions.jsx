@@ -1,18 +1,46 @@
+import { useState, useEffect } from 'react';
 import RecipeCard from '../components/RecipeCard';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
 export default function Occasions() {
-	const recipeInfo = (
-		<RecipeCard
-			title='Pasta'
-			description='Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.'
-			image='./assets/images/pasta.jpg'
-			className='recipe-card'
-			time='50 mins'
-		/>
-	);
+	const [randomRecipes, setRandomRecipes] = useState([]);
+	const [recommendedRecipes, setRecommendedRecipes] = useState([]);
+	const [loading, setLoading] = useState(true);
+
+	const fetchRandomRecipes = async (num) => {
+		const fetchPromises = [];
+		for (let i = 0; i < num; i++) {
+			fetchPromises.push(
+				fetch(
+					'https://www.themealdb.com/api/json/v1/1/random.php'
+				).then((res) => res.json())
+			);
+		}
+
+		const results = await Promise.all(fetchPromises);
+		return results.map((result) => result.meals[0]);
+	};
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const randomData = fetchRandomRecipes(9);
+			const recommendedData = fetchRandomRecipes(3);
+
+			const [randomRecipes, recommendedRecipes] =
+				await Promise.all([
+					randomData,
+					recommendedData,
+				]);
+
+			setRandomRecipes(randomRecipes);
+			setRecommendedRecipes(recommendedRecipes);
+			setLoading(false);
+		};
+
+		fetchData();
+	}, []);
 
 	return (
 		<>
@@ -176,24 +204,69 @@ export default function Occasions() {
 					</details>
 				</div>
 				<div className='RecipeLists'>
-					{recipeInfo}
-					{recipeInfo}
-					{recipeInfo}
-					{recipeInfo}
-					{recipeInfo}
-					{recipeInfo}
-					{recipeInfo}
-					{recipeInfo}
-					{recipeInfo}
+					<div className='recipeGrid'>
+						{loading ? (
+							<div>Loading Recipes...</div>
+						) : (
+							randomRecipes.map(
+								(
+									recipe,
+									index
+								) => (
+									<RecipeCard
+										key={
+											index
+										}
+										title={
+											recipe.strMeal
+										}
+										category={
+											recipe.strCategory
+										}
+										image={
+											recipe.strMealThumb
+										}
+										className='recipe-card'
+										time={
+											recipe.strTime ||
+											'Placeholder Time'
+										}
+									/>
+								)
+							)
+						)}
+					</div>
 				</div>
+
 				<div className='RecommendedRecipes'>
-					<h3>
-						Recommendations based on your
-						past Recipes:
-					</h3>
-					{recipeInfo}
-					{recipeInfo}
-					{recipeInfo}
+					<h3>Recommended Recipes:</h3>
+					{loading ? (
+						<div>Loading Recipes...</div>
+					) : (
+						recommendedRecipes.map(
+							(recipe, index) => (
+								<RecipeCard
+									key={
+										index
+									}
+									title={
+										recipe.strMeal
+									}
+									category={
+										recipe.strCategory
+									}
+									image={
+										recipe.strMealThumb
+									}
+									className='recipe-card'
+									time={
+										recipe.strTime ||
+										'Placeholder Time'
+									}
+								/>
+							)
+						)
+					)}
 				</div>
 			</div>
 		</>
