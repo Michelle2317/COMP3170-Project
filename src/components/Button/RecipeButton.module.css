@@ -1,0 +1,27 @@
+.recipeButton {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.recipeButton:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.recipeButton:active {
+    background-color: #d6d6d6;
+}
+
+.icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
