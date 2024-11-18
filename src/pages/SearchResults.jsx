@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Box, Grid, Typography } from '@mui/material';
-import RecipeCard from '../components/RecipeCard';
+import RecipeCardSearch from '../components/RecipeCardSearch';
 
 export default function SearchResults() {
 	const [recipes, setRecipes] = useState([]);
@@ -29,7 +29,9 @@ export default function SearchResults() {
 			</Typography>
 
 			{loading ? (
-				<Typography variant='h6'>Loading Recipes...</Typography>
+				<Typography variant='h6'>
+					Loading Recipes...
+				</Typography>
 			) : (
 				<Grid container spacing={3}>
 					{recipes.map((recipe) => (
@@ -39,9 +41,9 @@ export default function SearchResults() {
 							sm={4}
 							md={3}
 							key={recipe.idMeal}
-							sx={{ marginRight: -5 }} 
+							sx={{ marginRight: -5 }}
 						>
-							<RecipeCard
+							<RecipeCardSearch
 								title={
 									recipe.strMeal
 								}
