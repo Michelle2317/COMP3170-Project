@@ -3,7 +3,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function RecipeCard({
 	title,
@@ -14,9 +14,34 @@ export default function RecipeCard({
 	id,
 }) {
 	const navigate = useNavigate();
-
+	const location = useLocation();
 	const handleClick = () => {
-		navigate(`/recipe/${id}`);
+		if (
+			location.pathname === '/topPicks' ||
+			location.pathname === '/home' ||
+			location.pathname === '/recipes' ||
+			location.pathname === '/occasions'
+		) {
+			if (id) {
+				navigate(`/recipe/${id}`);
+			}
+		} else if (location.pathname.startsWith('/recipe')) {
+			if (location.pathname.includes('/topPicks')) {
+				navigate('/topPicks');
+			} else if (location.pathname.includes('/recipes')) {
+				navigate('/recipes');
+			} else if (location.pathname.includes('/occasions')) {
+				navigate('/occasions');
+			} else {
+				navigate('/home');
+			}
+		} else {
+			console.error(
+				'Unexpected location:',
+				location.pathname
+			);
+			navigate('/');
+		}
 	};
 
 	return (
