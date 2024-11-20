@@ -1,64 +1,107 @@
-.mainContainer{
-display: flex;
-padding: 50px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
 }
 
-.image{
-    width: fit-content;
-    height: 700px;
+.mainContainer {
+    display: flex; 
+    padding: 10px 20px; 
+    gap: 20px; 
+    overflow-x: auto; 
 }
-.image img{
-    width: 500px;
-    height: 500px;
+
+.image img {
+    width: 100px; 
+    height: 100px;
     object-fit: cover;
     border-radius: 50%;
-    padding: 20px 20px 20px 20px;
-    margin-top: 100px;
+    margin-bottom: 10px;
 }
-.information{
-    width: 100%;
-    margin-left: 100px;
-    gap: 1rem;
-}
-.information h1{
-font-size: 70px;
-}
-.information h2{
-    margin-top: 50px;
-}
-.information span{
-    color: lightgray;
-    display: flex;
-    opacity: 50%;
-}
-.recipes{
-   width: 100%;
-}
-.recipes h1{
-    font-size: 70px;
-}
-.recipes img{
-    height: 200px;
-    width: 200px;
-    border-radius: 100px;
 
-}
-.recipesImages{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-}
-.save-button {
+.information {
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem; 
+    flex: 1; 
+    min-width: 250px; 
+}
+
+.information h1 {
+    font-size: 24px; 
+    margin-bottom: 5px;
+}
+
+.information h2 {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.information input {
+    padding: 5px; 
+    font-size: 14px; 
+    width: 30%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.save-button {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 6px 12px; 
+    font-size: 12px; 
     cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .save-button:hover {
+    margin-top: 5px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.save-button:hover {
     background-color: #45a049;
-  }
+}
+
+.recipes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 2; 
+    min-width: 300px;
+}
+
+.recipes h1 {
+    font-size: 10px; 
+    margin-bottom: 5px;
+}
+
+.recipesImages {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 0.5rem; 
+  
+    
+}
+
+.recipeItem img {
+    width: 100%; 
+    height: 100px; 
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.recipeItem h2 {
+    font-size: 30px; 
+    margin: 30px 30px 30px 30px;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+}
+
+.recipeContainer{
+    max-width: 100%;
+    padding-right: 100rem;
+}
+.recipeContainer h1{
+    padding-bottom: 10rem;
+}
+
