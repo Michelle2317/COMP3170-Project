@@ -45,12 +45,26 @@ export default function RecipeDetails() {
     return (
         <Box sx={{ padding: 3 }}>
             {/* Recipe Name */}
-            <Typography variant="h3" gutterBottom>
+            <Typography 
+                variant="h3" 
+                gutterBottom 
+                sx={{ 
+                    textAlign: { xs: 'center', md: 'left' } 
+                }}
+            >
                 {recipe.strMeal}
             </Typography>
 
             {/* Save, Print, Share Button */}
-            <Box sx={{ display: 'flex', gap: 2, marginBottom: 2, position: 'relative' }}>
+            <Box 
+                sx={{ 
+                    display: 'flex', 
+                    gap: 2, 
+                    marginBottom: 2, 
+                    justifyContent: { xs: 'center', md: 'flex-start' }, 
+                    position: 'relative' 
+                }}
+            >
                 <RecipeButton
                     text={isSaved ? 'Saved' : 'Save'}
                     onClick={handleSave}
@@ -83,21 +97,32 @@ export default function RecipeDetails() {
 
             {/* Recipe Image and Nutrition Facts */}
             <Grid container spacing={3} sx={{ marginBottom: 2 }}>
-                <Grid item xs={12} md={8}>
-                    <img
-                        src={recipe.strMealThumb}
-                        alt={recipe.strMeal}
-                        style={{
-                            width: '100%',
-                            borderRadius: '8px',
-                        }}
-                    />
-                </Grid>
-                <Grid item xs={12} md={4}>
+                {/* Nutrition Facts Section (aligned left on desktop centered on mobile) */}
+                <Grid item xs={12} md={4} sx={{ order: { xs: 2, md: 1 }, textAlign: { xs: 'center', md: 'left' }, marginTop: { xs: 2, md: 0 } }}>
                     <Typography variant="h6" gutterBottom>
                         Nutrition Facts
                     </Typography>
                     {/* Nutrition info here */}
+                </Grid>
+
+                {/* Recipe Image Section (aligned right on desktop, centered on mobile) */}
+                <Grid item xs={12} md={8} sx={{ order: { xs: 1, md: 2 }, textAlign: { xs: 'center', md: 'left' } }}>
+                    <img
+                        src={recipe.strMealThumb}
+                        alt={recipe.strMeal}
+                        style={{
+                            float: 'right', 
+                            maxWidth: '40em', 
+                            maxHeight: '25em', 
+                            objectFit: 'contain', 
+                            borderRadius: '8px', 
+                            border: '5px solid var(--deep-pink)', 
+                            marginLeft: '20px', 
+                            marginBottom: '20px', 
+                            marginRight: '5em', 
+                            display: 'inline-block', 
+                        }}
+                    />
                 </Grid>
             </Grid>
 
