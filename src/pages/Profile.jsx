@@ -5,7 +5,6 @@ import recipeTwo from "../../public/images/recipetwo.jpg";
 import recipeThree from "../../public/images/recipeThree.jpg";
 import recipeFour from "../../public/images/recipeFour.jpg";
 import profileImage from "../../public/images/man.jpg";
-import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const [firstName, setFirstName] = useState("Nathan");
