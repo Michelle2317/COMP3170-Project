@@ -5,7 +5,6 @@ import recipeTwo from "../../public/images/recipetwo.jpg";
 import recipeThree from "../../public/images/recipeThree.jpg";
 import recipeFour from "../../public/images/recipeFour.jpg";
 import profileImage from "../../public/images/man.jpg";
-
 export default function Profile() {
   const [firstName, setFirstName] = useState("Nathan");
   const [lastName, setLastName] = useState("Schroter");
@@ -16,7 +15,6 @@ export default function Profile() {
     JSON.parse(localStorage.getItem("savedRecipes")) || []
   );
   const [activeFilter, setActiveFilter] = useState("Profile");
-
   const recipes = [
     {
       name: "Chicken",
@@ -43,30 +41,22 @@ export default function Profile() {
       instructions: "Simmer vegetables in broth with spices.",
     },
   ];
-
-
-  const handleSaveRecipe = (recipe) => {
+    const handleSaveRecipe = (recipe) => {
     const updatedRecipes = [...savedRecipes, recipe];
     setSavedRecipes(updatedRecipes);
     localStorage.setItem("savedRecipes", JSON.stringify(updatedRecipes));
   };
-
-  
-  const handleChange = (setter) => (e) => {
+    const handleChange = (setter) => (e) => {
     setter(e.target.value);
     setIsEdited(true);
   };
-
-
-  const handleSave = () => {
+    const handleSave = () => {
     alert("Changes saved!");
     setIsEdited(false);
   };
-
-
-  const renderRecipes = () => {
+    const renderRecipes = () => {
     const displayedRecipes =
-      activeFilter === "Saved Recipes" ? savedRecipes : recipes;
+    activeFilter === "Saved Recipes" ? savedRecipes : recipes;
 
     return (
       <div className="recipesImages">
@@ -97,7 +87,7 @@ export default function Profile() {
   };
 
 
-  const handleRemoveRecipe = (recipe) => {
+    const handleRemoveRecipe = (recipe) => {
     const updatedRecipes = savedRecipes.filter((r) => r.name !== recipe.name);
     setSavedRecipes(updatedRecipes);
     localStorage.setItem("savedRecipes", JSON.stringify(updatedRecipes));
