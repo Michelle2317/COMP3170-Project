@@ -17,7 +17,6 @@ export default function Profile() {
     JSON.parse(localStorage.getItem("savedRecipes")) || []
   );
   const [activeFilter, setActiveFilter] = useState("Profile");
-  const navigate = useNavigate();
 
   const recipes = [
     {
@@ -51,7 +50,6 @@ export default function Profile() {
     const updatedRecipes = [...savedRecipes, recipe];
     setSavedRecipes(updatedRecipes);
     localStorage.setItem("savedRecipes", JSON.stringify(updatedRecipes));
-    // navigate("/saverecipes");
   };
 
   
