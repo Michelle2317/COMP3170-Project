@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/recipeForm.css";
 
-
 const RecipeForm = () => {
   const [coverPhoto, setCoverPhoto] = useState(null);
   const [name, setName] = useState("");
@@ -18,7 +17,7 @@ const RecipeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !ethnicity) {
+    if (!name || !description || !timeToCook || !coverPhoto) {
       setError("Please fill in all required fields.");
       return;
     }
@@ -48,12 +47,12 @@ const RecipeForm = () => {
           </div>
         ) : (
           <label className="upload-button">
-            <input type="file" onChange={handlePhotoUpload} />
+            <input type="file" onChange={handlePhotoUpload} required />
             <span>Upload Cover</span>
           </label>
         )}
       </div>
-      
+
       <div className="form-group">
         <label>Name*</label>
         <input
@@ -61,42 +60,45 @@ const RecipeForm = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Enter recipe name"
+          required
         />
       </div>
-      
+
       <div className="form-group">
-        <label>Description</label>
+        <label>Description*</label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Enter recipe description"
+          required
         ></textarea>
       </div>
-      
+
       <div className="form-group">
-        <label>Time to Cook</label>
+        <label>Time to Cook (In Minutes)*</label>
         <input
-          type="range"
-          min="10"
-          max="120"
-          step="10"
+          type="number"
+          min="1"
+          max="360"
+          step="1"
           value={timeToCook}
-          onChange={(e) => setTimeToCook(e.target.value)}
+          onChange={(e) => setTimeToCook(Number(e.target.value))}
+          required
         />
-        <span>{timeToCook} min</span>
       </div>
-      
+
       <div className="form-group">
-        <label>Recipe Type</label>
+        <label>Meal Type (Optional)</label>
         <select value={mealType} onChange={(e) => setMealType(e.target.value)}>
           <option>Breakfast</option>
           <option>Lunch</option>
           <option>Dinner</option>
+          <option>Dessert</option>
         </select>
       </div>
 
       <div className="form-group">
-        <label>Ethnicity*</label>
+        <label>Ethnicity (Optional)</label>
         <input
           type="text"
           value={ethnicity}
