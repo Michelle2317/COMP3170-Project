@@ -6,6 +6,7 @@ import recipeThree from "../../public/images/recipeThree.jpg";
 import recipeFour from "../../public/images/recipeFour.jpg";
 import profileImage from "../../public/images/man.jpg";
 export default function Profile() {
+  
   const [firstName, setFirstName] = useState("Nathan");
   const [lastName, setLastName] = useState("Schroter");
   const [email, setEmail] = useState("ndschroter ....");
@@ -14,6 +15,7 @@ export default function Profile() {
   const [savedRecipes, setSavedRecipes] = useState(
     JSON.parse(localStorage.getItem("savedRecipes")) || []
   );
+
   const [activeFilter, setActiveFilter] = useState("Profile");
   const recipes = [
     {
@@ -41,6 +43,7 @@ export default function Profile() {
       instructions: "Simmer vegetables in broth with spices.",
     },
   ];
+  
     const handleSaveRecipe = (recipe) => {
     const updatedRecipes = [...savedRecipes, recipe];
     setSavedRecipes(updatedRecipes);
