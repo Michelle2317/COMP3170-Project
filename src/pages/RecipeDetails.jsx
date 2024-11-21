@@ -79,37 +79,37 @@ export default function RecipeDetails() {
             </Box>
 
             {/* RecipeButtons */}
-<Box
-    sx={{
-        display: 'flex',
-        gap: 2,
-        marginBottom: 2,
-        position: 'relative',
-    }}
->
-    <RecipeButton
-        text={isSaved ? 'Saved' : 'Save'}
-        onClick={handleSave}
-        Icon={isSaved ? Bookmark : BookmarkBorder}
-    />
-    <RecipeButton text="Print" onClick={handlePrint} Icon={Print} />
-    <RecipeButton text="Share" onClick={handleShare} Icon={Share} />
-</Box>
+			<Box
+				sx={{
+					display: 'flex',
+					gap: 2,
+					marginBottom: 2,
+					position: 'relative',
+				}}
+			>
+				<RecipeButton
+					text={isSaved ? 'Saved' : 'Save'}
+					onClick={handleSave}
+					Icon={isSaved ? Bookmark : BookmarkBorder}
+				/>
+				<RecipeButton text="Print" onClick={handlePrint} Icon={Print} />
+				<RecipeButton text="Share" onClick={handleShare} Icon={Share} />
+			</Box>
 
-{/* "Link Copied!" Popup */}
-{showPopup && (
-    <Box
-        sx={{
-            marginTop: '10px', // Adds spacing below the buttons
-            padding: '5px 10px',
-            fontSize: '12px',
-            whiteSpace: 'nowrap',
-            zIndex: 2, // Ensure it appears above other elements
-        }}
-    >
-        Link Copied!
-    </Box>
-)}
+			{/* "Link Copied!" Popup */}
+			{showPopup && (
+				<Box
+					sx={{
+						marginTop: '10px', // Adds spacing below the buttons
+						padding: '5px 10px',
+						fontSize: '12px',
+						whiteSpace: 'nowrap',
+						zIndex: 2, // Ensure it appears above other elements
+					}}
+				>
+					Link Copied!
+				</Box>
+			)}
 
 
             {/* Nutrition Facts Section */}
