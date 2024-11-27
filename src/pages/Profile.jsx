@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "../styles/profile.css";
-import recipeOne from "../../public/assets/images/recipeOne.jpg";
-import recipeTwo from "../../public/assets/images/recipetwo.jpg";
-import recipeThree from "../../public/assets/images/recipeThree.jpg";
-import recipeFour from "../../public/assets/images/recipeFour.jpg";
-import profileImage from "../../public/assets/images/man.jpg";
+import recipeOne from "/assets/images/recipeOne.jpg";
+import recipeTwo from "/assets/images/recipeTwo.jpg";
+import recipeThree from "/assets/images/recipeThree.jpg";
+import recipeFour from "/assets/images/recipeFour.jpg";
+import profileImage from "/assets/images/man.jpg";
 export default function Profile() {
   
   const [firstName, setFirstName] = useState("Nathan");
