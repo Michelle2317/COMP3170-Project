@@ -72,6 +72,13 @@ body {
     border-radius: 8px;
     object-fit: cover;
   }
+  .recipes{
+    position: absolute;
+    top: 200px;
+    left: 800px;
+    bottom: 10px;
+    padding-bottom: 10rem;
+  }
   
 
 

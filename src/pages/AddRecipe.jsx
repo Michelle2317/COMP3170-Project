@@ -32,6 +32,7 @@ const RecipeForm = () => {
   };
 
   return (
+    <div className="mainContainer">
     <form className="recipe-form" onSubmit={handleSubmit}>
       <div className="upload-cover">
         {coverPhoto ? (
@@ -113,6 +114,7 @@ const RecipeForm = () => {
         Submit Recipe
       </button>
     </form>
+    </div>
   );
 };
 
