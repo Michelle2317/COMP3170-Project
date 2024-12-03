@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Recipes from './pages/Recipes';
-import Occasions from './pages/Occasions';
+import RandomRecipes from './pages/RandomRecipes';
 import TopPicks from './pages/TopPicks';
 import Profile from './pages/Profile';
 import AddRecipe from './pages/AddRecipe';
@@ -22,7 +22,7 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/recipes" element={<Recipes />} />
                 <Route path="/topPicks" element={<TopPicks />} />
-                <Route path="/occasions" element={<Occasions />} />
+                <Route path="/randomRecipes" element={<RandomRecipes />} />
                 <Route path="/addrecipe" element={<AddRecipe />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/search-results" element={<SearchResults />} />

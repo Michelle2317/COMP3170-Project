@@ -161,7 +161,7 @@ export default function Footer() {
 									</Typography>
 								</Link>
 								<Link
-									to='/Occasions'
+									to='/randomRecipes'
 									style={{
 										textDecoration:
 											'none',
@@ -179,7 +179,7 @@ export default function Footer() {
 											},
 										}}
 									>
-										Occasions
+										Random Recipes
 									</Typography>
 								</Link>
 							</Grid>

@@ -20,7 +20,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const pages = [
 	{ name: 'Recipes', path: '/recipes' },
 	{ name: 'Top Picks', path: '/topPicks' },
-	{ name: 'Occasions', path: '/occasions' },
+	{ name: 'Random Recipes', path: '/randomRecipes' },
 	{ name: 'Add Recipe', path: '/addrecipe' },
 ];
 

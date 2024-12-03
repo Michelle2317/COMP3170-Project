@@ -75,7 +75,7 @@ export default function RecipeCard({
 						variant='p'
 						sx={{ color: 'var(--gray)' }}
 					>
-						{time}
+						{/* {time} */} 
 					</Typography>
 				</CardContent>
 			</CardActionArea>
