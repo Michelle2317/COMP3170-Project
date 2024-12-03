@@ -103,12 +103,14 @@ body {
 	margin-bottom: 5em;
 }
 
+/*Filter*/
 .Filter {
 	display: flex;
 	flex-direction: column;
 	min-width: 20vw;
 	padding-left: 2em;
 	padding-right: 2em;
+
 }
 
 .FilterText {
@@ -117,12 +119,18 @@ body {
 
 .filterDetails {
 	border: 1px solid var(--deep-pink);
+	color: var(--deep-pink);
+	border-radius: 15px;
+	background-color: var(--white);
 }
 
 .filterSummary {
 	font-size: x-large;
 	padding: 0.5em;
-	color: var(--deep-pink);
+	color: var(--white);
+	background-color: var(--deep-pink);
+	border-bottom: 2px solid var(--light-pink);
+	border-radius: 10px;
 }
 
 .checkBox {
@@ -133,7 +141,7 @@ body {
 }
 
 .checkBox:hover {
-	background-color: var(--light-gray);
+	background-color: var(--light-pink);
 }
 
 .RecommendedRecipes {
