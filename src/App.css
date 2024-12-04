@@ -201,12 +201,22 @@ body {
 	backface-visibility: hidden;
 }
 
-.flip-card-front {
-	background: var(--light-gray);
-}
-
 .flip-card-back {
 	transform: rotateY(180deg);
+}
+
+.flip-card-front {
+	background: var(--light-gray);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pick-me-text {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--black);
+	text-align: center;
 }
 
 .generateButton {

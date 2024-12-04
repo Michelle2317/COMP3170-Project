@@ -92,7 +92,12 @@ export default function RandomRecipe() {
 								}
 							>
 								<div className='flip-card-inner'>
-									<div className='flip-card-front'></div>
+									<div className='flip-card-front'>
+										<h3 className='pick-me-text'>
+											Pick
+											Me!
+										</h3>
+									</div>
 									<Link
 										className='flip-card-back'
 										to={`/recipe/${recipe.idMeal}`}
@@ -129,7 +134,7 @@ export default function RandomRecipe() {
 
 			<div className='generateButton'>
 				<ButtonRegular
-					text='Generate'
+					text='Discover Recipes'
 					onClick={fetchMoreRecipes}
 				/>
 			</div>

@@ -276,7 +276,6 @@ export default function Navbar() {
 								my: 2,
 								px: 2,
 								py: 0.5,
-								color: 'var(--black)',
 								display: 'block',
 								textTransform:
 									'capitalize',

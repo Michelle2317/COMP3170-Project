@@ -168,7 +168,7 @@ export default function Home() {
 			</div>
 			<div className='getRecipeButton'>
 				<Link to='/randomRecipes'>
-					<Button text='Get Recipe' />
+					<Button text='Discover Recipes' />
 				</Link>
 			</div>
 		</>
