@@ -152,6 +152,7 @@ body {
 
 .checkBox:hover {
 	background-color: var(--light-pink);
+	border-radius: 5px;
 }
 
 .RecommendedRecipes {
