@@ -16,6 +16,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useLocation } from 'react-router-dom';
 
 const pages = [
 	{ name: 'Recipes', path: '/recipes' },
@@ -77,6 +78,7 @@ export default function Navbar() {
 	const [anchorElUser, setAnchorElUser] = useState(null);
 	const [searchName, setsearchName] = useState('');
 	const navigate = useNavigate();
+	const location = useLocation();
 
 	const handleSearch = async (e) => {
 		e.preventDefault();
@@ -288,6 +290,18 @@ export default function Navbar() {
 									backgroundColor:
 										'var(--deep-pink)',
 								},
+
+								backgroundColor:
+									location.pathname ===
+									page.path
+										? 'var(--deep-pink)'
+										: 'transparent',
+								color:
+									location.pathname ===
+									page.path
+										? 'var(--white)'
+										: 'var(--black)',
+								mr: 0.5,
 							}}
 						>
 							<Link
