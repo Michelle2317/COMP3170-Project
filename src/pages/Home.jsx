@@ -29,7 +29,7 @@ export default function Home() {
 	return (
 		<>
 			<div className='heroContainer'>
-				<div className='heroText'>
+				<div>
 					<h1>
 						Embark on a Culinary Journey of{' '}
 						<br />
@@ -158,6 +158,18 @@ export default function Home() {
 				) : (
 					<p>Loading Recipes...</p>
 				)}
+			</div>
+
+			<div className='randomRecipeGenerator'>
+				<h2>
+					Indecisive? Try our Random Recipe
+					Generator!
+				</h2>
+			</div>
+			<div className='getRecipeButton'>
+				<Link to='/randomRecipes'>
+					<Button text='Get Recipe' />
+				</Link>
 			</div>
 		</>
 	);

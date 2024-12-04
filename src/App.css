@@ -89,6 +89,17 @@ body {
 	height: 22rem;
 }
 
+.randomRecipeGenerator {
+	display: flex;
+	justify-content: center;
+}
+
+.getRecipeButton {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 8rem;
+}
+
 /*Recipe List*/
 .RecipeLists {
 	display: flex;
