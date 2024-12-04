@@ -1,182 +1,150 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/profile.css";
-import recipeOne from "/assets/images/recipeOne.jpg";
-import recipeTwo from "/assets/images/recipeTwo.jpg";
-import recipeThree from "/assets/images/recipeThree.jpg";
-import recipeFour from "/assets/images/recipeFour.jpg";
 import profileImage from "/assets/images/man.jpg";
+import Carousel from "../components/carrosuel/carousel.jsx";
+
 export default function Profile() {
-  
   const [firstName, setFirstName] = useState("Nathan");
   const [lastName, setLastName] = useState("Schroter");
+  const [bio, setBio] = useState("Photographer | Foodie | Traveler");
   const [email, setEmail] = useState("ndschroter ....");
   const [phone, setPhone] = useState("778 ....");
   const [isEdited, setIsEdited] = useState(false);
-  const [savedRecipes, setSavedRecipes] = useState(
-    JSON.parse(localStorage.getItem("savedRecipes")) || []
-  );
+  const [recipes, setRecipes] = useState([]);
+  const [activeFilter, setActiveFilter] = useState("Newest");
+  const [postCount, setPostCount] = useState(0);
 
-  const [activeFilter, setActiveFilter] = useState("Profile");
-  const recipes = [
-    {
-      name: "Chicken",
-      image: recipeOne,
-      ingredients: "Chicken, spices, oil",
-      instructions: "Cook chicken with spices in oil.",
-    },
-    {
-      name: "Pasta",
-      image: recipeTwo,
-      ingredients: "Pasta, sauce, cheese",
-      instructions: "Boil pasta, mix with sauce and cheese.",
-    },
-    {
-      name: "Salad",
-      image: recipeThree,
-      ingredients: "Lettuce, tomatoes, dressing",
-      instructions: "Mix all ingredients together.",
-    },
-    {
-      name: "Soup",
-      image: recipeFour,
-      ingredients: "Broth, vegetables, spices",
-      instructions: "Simmer vegetables in broth with spices.",
-    },
-  ];
-  
-    const handleSaveRecipe = (recipe) => {
-    const updatedRecipes = [...savedRecipes, recipe];
-    setSavedRecipes(updatedRecipes);
-    localStorage.setItem("savedRecipes", JSON.stringify(updatedRecipes));
+  useEffect(() => {
+    const storedRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    setRecipes(storedRecipes);
+    setPostCount(storedRecipes.length);
+  }, []);
+
+  const handleRemoveRecipeFromProfile = (index) => {
+    const updatedRecipes = [...recipes];
+    updatedRecipes.splice(index, 1);
+    setRecipes(updatedRecipes);
+    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
+    setPostCount(updatedRecipes.length);
   };
-    const handleChange = (setter) => (e) => {
+
+  const handleSort = (order) => {
+    const sortedRecipes =
+      order === "Newest"
+        ? [...recipes].sort((a, b) => new Date(b.date) - new Date(a.date))
+        : [...recipes].sort((a, b) => new Date(a.date) - new Date(b.date));
+    setRecipes(sortedRecipes);
+    setActiveFilter(order);
+  };
+
+  const handleChange = (setter) => (e) => {
     setter(e.target.value);
     setIsEdited(true);
   };
-    const handleSave = () => {
-    alert("Changes saved!");
-    setIsEdited(false);
-  };
-    const renderRecipes = () => {
-    const displayedRecipes =
-    activeFilter === "Saved Recipes" ? savedRecipes : recipes;
 
+  const handleSave = () => {
+    setIsEdited(false);
+    alert("Profile information saved!");
+  };
+
+  const renderRecipes = () => {
     return (
-      <div className="recipesImages">
-        {displayedRecipes.map((recipe, index) => (
+      <div className="recipesGrid">
+        {recipes.map((recipe, index) => (
           <div key={index} className="recipeItem">
             <img src={recipe.image} alt={recipe.name} />
             <h2>{recipe.name}</h2>
-            {activeFilter === "Profile" && (
-              <button
-                className="save-button-small"
-                onClick={() => handleSaveRecipe(recipe)}
-              >
-                Save
-              </button>
-            )}
-            {activeFilter === "Saved Recipes" && (
-              <button
-                className="save-button-small delete-button"
-                onClick={() => handleRemoveRecipe(recipe)}
-              >
-                Remove
-              </button>
-            )}
+            <button
+              className="remove-button-small"
+              onClick={() => handleRemoveRecipeFromProfile(index)}
+            >
+              Remove
+            </button>
           </div>
         ))}
       </div>
     );
   };
 
-
-    const handleRemoveRecipe = (recipe) => {
-    const updatedRecipes = savedRecipes.filter((r) => r.name !== recipe.name);
-    setSavedRecipes(updatedRecipes);
-    localStorage.setItem("savedRecipes", JSON.stringify(updatedRecipes));
-  };
-
   return (
-    <div className="mainContainer">
-      
-      <div className="filterNav">
-        <button
-          className={`filterButton ${
-            activeFilter === "Profile" ? "active" : ""
-          }`}
-          onClick={() => setActiveFilter("Profile")}
-        >
-          Profile
-        </button>
-        <button
-          className={`filterButton ${
-            activeFilter === "Saved Recipes" ? "active" : ""
-          }`}
-          onClick={() => setActiveFilter("Saved Recipes")}
-        >
-          Saved Recipes
-        </button>
+    <div className="profileContainer">
+      <div className="profileCard">
+        <div className="profileHeader">
+          <img className="profileImage" src={profileImage} alt="Profile" />
+          <div className="profileDetails">
+            <h1 className="profileName">
+              {firstName} {lastName}
+            </h1>
+            <p className="profileBio">{bio}</p>
+          </div>
+        </div>
+
+        <div className="storiesSection">
+          <h2>Featured Stories</h2>
+          <div className="stories">
+            <div className="story">Story 1</div>
+            <div className="story">Story 2</div>
+            <div className="story">Story 3</div>
+          </div>
+        </div>
+        <div>
+               <Carousel/> 
+        </div>
+
+
+        <div className="profileEditSection">
+          <h1>About Me</h1>
+          <h2>First Name</h2>
+          <input
+            type="text"
+            value={firstName}
+            onChange={handleChange(setFirstName)}
+            placeholder="Nathan"
+          />
+          <h2>Last Name</h2>
+          <input
+            type="text"
+            value={lastName}
+            onChange={handleChange(setLastName)}
+            placeholder="Schroter"
+          />
+          <h2>Email</h2>
+          <input
+            type="text"
+            value={email}
+            onChange={handleChange(setEmail)}
+            placeholder="...@gmail.com"
+          />
+          <h2>Phone Number</h2>
+          <input
+            type="text"
+            value={phone}
+            onChange={handleChange(setPhone)}
+            placeholder="778 ...."
+          />
+          {isEdited && (
+            <button className="save-button" onClick={handleSave}>
+              Save
+            </button>
+          )}
+        </div>
       </div>
 
-
-      <div className="content">
-        {activeFilter === "Profile" && (
-          <div className="information">
-
-            <div className="image">
-              <img src={profileImage} alt="Profile" />
-            </div>
-            <h1>About Me</h1>
-            <h2>First Name</h2>
-            <input
-              type="text"
-              value={firstName}
-              onChange={handleChange(setFirstName)}
-              placeholder="Nathan"
-            />
-            <h2>Last Name</h2>
-            <input
-              type="text"
-              value={lastName}
-              onChange={handleChange(setLastName)}
-              placeholder="Schroter"
-            />
-            <h2>Email</h2>
-            <input
-              type="text"
-              value={email}
-              onChange={handleChange(setEmail)}
-              placeholder="...@gmail.com"
-            />
-            <h2>Phone Number</h2>
-            <input
-              type="text"
-              value={phone}
-              onChange={handleChange(setPhone)}
-              placeholder="778 ...."
-            />
-            {isEdited && (
-              <button className="save-button" onClick={handleSave}>
-                Save
-              </button>
-            )}
-          </div>
-        )}
-
-        {activeFilter === "Saved Recipes" && (
-          <div className="recipes">
-            <h1>Saved Recipes</h1>
-            {renderRecipes()}
-          </div>
-        )}
-
-        {activeFilter === "Profile" && (
-          <div className="recipes">
-            <h1>Recent Recipes</h1>
-            {renderRecipes()}
-          </div>
-        )}
+      <div className="recipesSection">
+        <h2>Recipes</h2>
+        <div className="filter">
+          <label>Sort By:</label>
+          <select
+            value={activeFilter}
+            onChange={(e) => handleSort(e.target.value)}
+          >
+            <option value="Newest">Newest to Oldest</option>
+            <option value="Oldest">Oldest to Newest</option>
+          </select>
+        </div>
+        {renderRecipes()}
       </div>
     </div>
   );
 }
+

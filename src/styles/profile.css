@@ -1,84 +1,209 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-  }
-  
-  .mainContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start; 
-    padding: 20px;
-  }
-  
-  .filterNav {
-    display: flex;
-    justify-content: center;
-    width: 100%; 
-    margin-bottom: 20px;
-  }
-  
-  .filterButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    background: none;
-    outline: none;
-    color: #555;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom 0.3s ease;
-  }
-  
-  .filterButton.active {
-    font-weight: bold;
-    color: #000;
-    border-bottom: 2px solid green;
-  }
-  
-  .content {
-    width: 100%;
-    text-align: left; 
-  }
-  
-  .image img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 20px;
-    border: 4px solid #ddd;
-  }
-  
-  .information {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .information input{
-    width: 30%;
-  }
-  
-  .recipesImages {
-    display: grid;
-    grid-template-rows: repeat(1fr, 1fr, 1fr, 1fr); 
-    gap: 20px;
-  }
-  
-  .recipeItem img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-  }
-  .recipes{
-    position: absolute;
-    top: 200px;
-    left: 800px;
-    bottom: 10px;
-    padding-bottom: 10rem;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.profileCard {
+  width: 60%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+.profileImage {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.profileDetails {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.profileName {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.profileBio {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.storiesSection {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.storiesSection h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.stories {
+  display: flex;
+  gap: 15px;
+}
+
+.story {
+  width: 100px;
+  height: 150px;
+  background: #ddd;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 150px;
+  font-size: 14px;
+  color: #555;
+}
+
+.recipesSection {
+  width: 40%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recipesSection h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.filter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter select {
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.recipesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* .recipeItem img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+} */
+
+.recipeItem h2 {
+  font-size: 16px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.recipesImages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.recipeItem img {
+  width: 300px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  border-radius: 8px;
+}
+
+.recipeItem {
+  text-align: center;
+}
+
+.remove-button-small {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.remove-button-small:hover {
+  background: #e60000;
+}
+.profileEditSection {
+  text-align: left;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-left: -110rem;
+  margin-top: -10rem;
+  text-align: left;
+}
+
+.profileEditSection h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.profileEditSection h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.profileEditSection input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.profileEditSection .save-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.profileEditSection .save-button:hover {
+  background-color: #0056b3;
+}
+
+
   
 
 
