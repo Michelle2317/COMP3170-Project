@@ -105,7 +105,7 @@ export default function Home() {
 				</h2>
 				<MuiLink
 					component={Link}
-					to='/recipes'
+					to='/topPicks'
 					sx={{
 						textDecoration: 'none',
 						color: 'var(--deep-pink)',
