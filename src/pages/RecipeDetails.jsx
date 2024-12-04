@@ -10,8 +10,6 @@ export default function RecipeDetails() {
     const [showPopup, setShowPopup] = useState(false);
     const [isSaved, setIsSaved] = useState(false);
 
-    const placeholderDescription =
-        'This is a placeholder short description for the recipe. Add details here about what makes this recipe unique and special.';
     const placeholderNutrition = {
         calories: '250 kcal',
         carbs: '30 g',
@@ -63,14 +61,14 @@ export default function RecipeDetails() {
                 {recipe.strMeal}
             </Typography>
 
-            {/* Times Section Positioned Below Title */}
+            {/* Times Section */}
             <Box
                 sx={{
                     display: 'flex',
                     flexWrap: 'wrap',
                     marginTop: '10px',
                     marginBottom: '20px',
-                    gap: '1em', // This will ensure that the text is 1em apart
+                    gap: '1em',
                 }}
             >
                 <Typography variant="body1">Prep Time: {placeholderTimes.prepTime}</Typography>
@@ -78,61 +76,80 @@ export default function RecipeDetails() {
                 <Typography variant="body1">Serving Size: {placeholderTimes.servingSize}</Typography>
             </Box>
 
-            {/* RecipeButtons */}
-			<Box
-				sx={{
-					display: 'flex',
-					gap: 2,
-					marginBottom: 2,
-					position: 'relative',
-				}}
-			>
-				<RecipeButton
-					text={isSaved ? 'Saved' : 'Save'}
-					onClick={handleSave}
-					Icon={isSaved ? Bookmark : BookmarkBorder}
-				/>
-				<RecipeButton text="Print" onClick={handlePrint} Icon={Print} />
-				<RecipeButton text="Share" onClick={handleShare} Icon={Share} />
-			</Box>
-
-			{/* "Link Copied!" Popup */}
-			{showPopup && (
-				<Box
-					sx={{
-						marginTop: '10px', // Adds spacing below the buttons
-						padding: '5px 10px',
-						fontSize: '12px',
-						whiteSpace: 'nowrap',
-						zIndex: 2, // Ensure it appears above other elements
-					}}
-				>
-					Link Copied!
-				</Box>
-			)}
-
-
-            {/* Nutrition Facts Section */}
-            <Box sx={{ display: 'flex', alignItems: 'flex-start', marginBottom: '2em' }}>
-                <Box sx={{ flex: 1 }}>
-                    <Typography variant="h6" gutterBottom>
-                        Nutrition Facts
-                    </Typography>
-                    <Typography variant="body1">Calories: {placeholderNutrition.calories}</Typography>
-                    <Typography variant="body1">Carbs: {placeholderNutrition.carbs}</Typography>
-                    <Typography variant="body1">Protein: {placeholderNutrition.protein}</Typography>
-                    <Typography variant="body1">Fat: {placeholderNutrition.fat}</Typography>
-                </Box>
+            {/* Recipe Buttons */}
+            <Box
+                sx={{
+                    display: 'flex',
+                    gap: 2,
+                    marginBottom: 2,
+                    position: 'relative',
+                }}
+            >
+                <RecipeButton
+                    text={isSaved ? 'Saved' : 'Save'}
+                    onClick={handleSave}
+                    Icon={isSaved ? Bookmark : BookmarkBorder}
+                />
+                <RecipeButton text="Print" onClick={handlePrint} Icon={Print} />
+                <RecipeButton text="Share" onClick={handleShare} Icon={Share} />
             </Box>
 
-            {/* Image Section with Absolute Positioning */}
+            {/* "Link Copied!" Popup */}
+            {showPopup && (
+                <Box
+                    sx={{
+                        marginTop: '10px',
+                        marginBottom: '20px',
+                        padding: '5px 10px',
+                        fontSize: '20px',
+                        whiteSpace: 'nowrap',
+                        zIndex: 2,
+                        border: '3px solid var(--deep-pink)',
+                        borderRadius: '8px',
+                        maxWidth: 'fit-content',
+                    }}
+                >
+                    Link Copied!
+                </Box>
+            )}
+
+            {/* Nutrition Facts Section */}
+            <Box
+                sx={{
+                    border: '5px solid var(--deep-pink)',
+                    borderRadius: '8px',
+                    padding: '10px',
+                    marginBottom: '2em',
+                    maxWidth: 'fit-content',
+                }}
+            >
+                <Typography variant="h6" gutterBottom>
+                    Nutrition Facts
+                </Typography>
+                <Typography variant="body1">Calories: {placeholderNutrition.calories}</Typography>
+                <Typography variant="body1">Carbs: {placeholderNutrition.carbs}</Typography>
+                <Typography variant="body1">Protein: {placeholderNutrition.protein}</Typography>
+                <Typography variant="body1">Fat: {placeholderNutrition.fat}</Typography>
+            </Box>
+
+            {/* Image Section with Responsiveness */}
             <Box
                 sx={{
                     position: 'absolute',
-                    top: '10%', // Aligns image with Nutrition Facts
+                    top: '10%',
                     right: 0,
-                    marginRight: '5em', // Adjust this to move the image further or closer
+                    marginRight: '5em',
                     zIndex: 1,
+                    '@media (max-width: 1200px)': {
+                        marginRight: '2em',
+                    },
+                    '@media (max-width: 900px)': {
+                        position: 'relative',
+                        top: '0',
+                        right: '0',
+                        marginRight: '0',
+                        marginBottom: '20px',
+                    },
                 }}
             >
                 <img
@@ -145,21 +162,28 @@ export default function RecipeDetails() {
                         borderRadius: '8px',
                         border: '5px solid var(--deep-pink)',
                         marginBottom: '20px',
+                        width: '100%',
+                        height: 'auto',
                     }}
                 />
             </Box>
 
             {/* Ingredients Section */}
-            <Box sx={{ marginTop: '1em' }}>
+            <Box
+                sx={{
+                    border: '5px solid var(--deep-pink)',
+                    borderRadius: '8px',
+                    padding: '10px',
+                    marginTop: '1em',
+                    maxWidth: 'fit-content',
+                }}
+            >
                 <Typography variant="h6" gutterBottom>
                     Ingredients
                 </Typography>
                 <ul style={{ paddingLeft: '20px' }}>
                     {Object.keys(recipe)
-                        .filter(
-                            (key) =>
-                                key.includes('strIngredient') && recipe[key]
-                        )
+                        .filter((key) => key.includes('strIngredient') && recipe[key])
                         .map((ingredientKey, index) => {
                             const ingredient = recipe[ingredientKey];
                             const measure = recipe[`strMeasure${index + 1}`];
@@ -175,7 +199,15 @@ export default function RecipeDetails() {
             </Box>
 
             {/* Instructions Section */}
-            <Box sx={{ marginTop: '2em' }}>
+            <Box
+                sx={{
+                    border: '5px solid var(--deep-pink)',
+                    borderRadius: '8px',
+                    padding: '10px',
+                    marginTop: '2em',
+                    maxWidth: 'fit-content',
+                }}
+            >
                 <Typography variant="h6" gutterBottom>
                     Instructions
                 </Typography>

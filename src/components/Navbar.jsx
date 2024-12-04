@@ -230,10 +230,6 @@ export default function Navbar() {
 												marginLeft: '0.5rem',
 											}}
 										>
-											Once
-											Upon
-											a
-											Meal
 										</Typography>
 									</Link>
 								</Typography>

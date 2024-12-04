@@ -15,6 +15,11 @@ export default function RecipeCard({
 }) {
 	const navigate = useNavigate();
 	const location = useLocation();
+
+	{/*Truncating title*/}
+	const truncatedTitle =
+		title.length > 17 ? title.substring(0, 17) + '...' : title;
+
 	const handleClick = () => {
 		if (
 			location.pathname === '/topPicks' ||
@@ -36,10 +41,7 @@ export default function RecipeCard({
 				navigate('/home');
 			}
 		} else {
-			console.error(
-				'Unexpected location:',
-				location.pathname
-			);
+			console.error('Unexpected location:', location.pathname);
 			navigate('/');
 		}
 	};
@@ -52,30 +54,29 @@ export default function RecipeCard({
 		>
 			<CardActionArea>
 				<CardMedia
-					component='img'
-					height='190'
+					component="img"
+					height="190"
 					image={image}
 					alt={title}
 				/>
 				<CardContent>
 					<Typography
 						gutterBottom
-						variant='p'
-						component='div'
+						variant="p"
+						component="div"
 					>
 						{category}
 					</Typography>
 					<Typography
-						variant='h6'
+						variant="h6"
 						sx={{ color: 'var(--black)' }}
 					>
-						{title}
+						{truncatedTitle} 
 					</Typography>
 					<Typography
-						variant='p'
+						variant="p"
 						sx={{ color: 'var(--gray)' }}
 					>
-						{/* {time} */} 
 					</Typography>
 				</CardContent>
 			</CardActionArea>
