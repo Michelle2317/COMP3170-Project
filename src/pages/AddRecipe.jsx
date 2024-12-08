@@ -49,7 +49,7 @@ const RecipeForm = () => {
     <div className="mainContainer">
     <img src={background} alt="background"></img>
       
-<div className="mainContainer">
+<div className="formContainer">
   <div className="header">
     <h1>Share Your Recipe</h1>
     <p>Upload a recipe to inspire others. Fill out the details and submit!</p>

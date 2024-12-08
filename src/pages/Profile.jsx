@@ -68,6 +68,7 @@ export default function Profile() {
 
   return (
     <div className="profileContainer">
+
       <div className="profileCard">
         <div className="profileHeader">
           <img className="profileImage" src={profileImage} alt="Profile" />
@@ -78,22 +79,19 @@ export default function Profile() {
             <p className="profileBio">{bio}</p>
           </div>
         </div>
+        <h2 class="about">About Me</h2>
+        <p className="aboutText">"Hi there! 👩‍🍳 I'm Chad, a passionate home chef who finds joy in creating magic in the kitchen. Whether it’s perfecting classic recipes, experimenting with bold flavors, or plating up something beautiful, cooking is my love language. 🥘✨
 
-        <div className="storiesSection">
-          <h2>Featured Stories</h2>
-          <div className="stories">
-            <div className="story">Story 1</div>
-            <div className="story">Story 2</div>
-            <div className="story">Story 3</div>
-          </div>
+I believe every dish tells a story, and I’m always on the hunt for fresh ingredients, exciting cuisines, and inspiration to make meals that bring people together. From Sunday meal preps to last-minute dinner parties, I thrive on making food that nourishes the soul. 🍝🌿
+
+When I’m not in the kitchen, you can find me exploring local markets, sharing recipes online, or dreaming up my next culinary adventure. Bon appétit!"</p>
+        <h2 className="socialsHeader">Socials</h2>
+        <div className="socials"> 
+        <img src="../../public/assets/images/instagram.jpg"></img>
+        <img src="../../public/assets/images/x.jpg"></img>
         </div>
-        <div>
-               <Carousel/> 
-        </div>
-
-
         <div className="profileEditSection">
-          <h1>About Me</h1>
+          <h1>Contacts</h1>
           <h2>First Name</h2>
           <input
             type="text"
@@ -128,6 +126,21 @@ export default function Profile() {
             </button>
           )}
         </div>
+        <div className="storiesSection">
+          <h2>Featured Stories</h2>
+          <div className="stories">
+            <div className="story"> <img src="../../public/assets/images/storyOne.jpg"></img></div>
+            <div className="story"><img src="../../public/assets/images/storyTwo.jpg"></img></div>
+            <div className="story"><img src="../../public/assets/images/storyThree.jpg"></img></div>
+            <div className="story"><img src="../../public/assets/images/storyFour.jpg"></img></div>
+          </div>
+        </div>
+      
+        <div className="Carosuel">
+               <Carousel/> 
+        </div>
+
+    
       </div>
 
       <div className="recipesSection">
