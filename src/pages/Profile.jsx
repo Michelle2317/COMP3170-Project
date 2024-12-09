@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import "../styles/profile.css";
 import profileImage from "/assets/images/man.jpg";
 import Carousel from "../components/carrosuel/carousel.jsx";
+import Insta from "../../public/assets/images/instagram.jpg";
+import X from "../../public/assets/images/x.jpg";
+import storyOne from "../../public/assets/images/storyOne.jpg";
+import storyTwo from "../../public/assets/images/storyTwo.jpg";
+import storyThree from "../../public/assets/images/storyThree.jpg"
+import storyFour from "../../public/assets/images/storyFour.jpg"
 
 export default function Profile() {
   const [firstName, setFirstName] = useState("Nathan");
@@ -87,8 +93,8 @@ I believe every dish tells a story, and I’m always on the hunt for fresh ingre
 When I’m not in the kitchen, you can find me exploring local markets, sharing recipes online, or dreaming up my next culinary adventure. Bon appétit!"</p>
         <h2 className="socialsHeader">Socials</h2>
         <div className="socials"> 
-        <img src="../../public/assets/images/instagram.jpg"></img>
-        <img src="../../public/assets/images/x.jpg"></img>
+        <img src={Insta}></img>
+        <img src={X}></img>
         </div>
         <div className="profileEditSection">
           <h1>Contacts</h1>
@@ -129,10 +135,10 @@ When I’m not in the kitchen, you can find me exploring local markets, sharing 
         <div className="storiesSection">
           <h2>Featured Stories</h2>
           <div className="stories">
-            <div className="story"> <img src="../../public/assets/images/storyOne.jpg"></img></div>
-            <div className="story"><img src="../../public/assets/images/storyTwo.jpg"></img></div>
-            <div className="story"><img src="../../public/assets/images/storyThree.jpg"></img></div>
-            <div className="story"><img src="../../public/assets/images/storyFour.jpg"></img></div>
+            <div className="story"> <img src={storyOne}></img></div>
+            <div className="story"><img src={storyTwo}></img></div>
+            <div className="story"><img src={storyThree}></img></div>
+            <div className="story"><img src={storyFour}></img></div>
           </div>
         </div>
       
