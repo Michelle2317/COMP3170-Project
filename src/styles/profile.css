@@ -30,11 +30,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 20px;
+  padding: 0;
+  margin: 0;
   width: 100%;
-  background-image: url("../../public/assets/images/profileBackground.jpg");
-  background-size: 100% 200px;
-  background-repeat: no-repeat;
+
+}
+.headerBackground{
+  width: 100%;
+  height: 200px;
+  z-index: 0;
+  object-fit: cover;
 }
 .about{
   margin-top: 30px;
@@ -62,24 +67,29 @@ body {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 20px;
+  margin-right: 250px;
+  position: absolute;
 }
 
 .profileDetails {
   text-align: left;
   margin-left: 20px;
+  position: absolute;
+  padding-left: 200px;
 }
 
 .profileName {
   font-size: 24px;
   margin: 10px 0;
-  color: white;
+  color:white;
 }
 
 .profileBio {
   font-size: 14px;
   color: white;
   margin-bottom: 20px;
+  z-index: 1;
+
 }
 
 .storiesSection {

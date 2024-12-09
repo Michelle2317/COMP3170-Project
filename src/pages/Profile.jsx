@@ -8,6 +8,7 @@ import storyOne from "../../public/assets/images/storyOne.jpg";
 import storyTwo from "../../public/assets/images/storyTwo.jpg";
 import storyThree from "../../public/assets/images/storyThree.jpg"
 import storyFour from "../../public/assets/images/storyFour.jpg"
+import profileBackground from "../../public/assets/images/profileBackground.jpg"
 
 export default function Profile() {
   const [firstName, setFirstName] = useState("Nathan");
@@ -76,7 +77,8 @@ export default function Profile() {
     <div className="profileContainer">
 
       <div className="profileCard">
-        <div className="profileHeader">
+        <div className="profileHeader" >
+          <img className="headerBackground" src={profileBackground}></img>
           <img className="profileImage" src={profileImage} alt="Profile" />
           <div className="profileDetails">
             <h1 className="profileName">
