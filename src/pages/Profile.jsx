@@ -30,6 +30,7 @@ export default function Profile() {
       setPostCount(storedRecipes.length);
     }
   }, []);
+  
 
   const handleRemoveRecipeFromProfile = (index) => {
     const updatedRecipes = [...recipes];

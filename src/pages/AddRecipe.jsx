@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "../styles/recipeForm.css";
-// import background from "../../public/assets/images/background.jpg";
-import background from "/assets/images/background.jpg";
 
 const RecipeForm = () => {
   const [coverPhoto, setCoverPhoto] = useState(null);
@@ -48,103 +46,103 @@ const RecipeForm = () => {
 
   return (
     <div className="mainContainer">
-    <img src={background} alt="background"></img>
-      
-<div className="formContainer">
-  <div className="header">
-    <h1>Share Your Recipe</h1>
-    <p>Upload a recipe to inspire others. Fill out the details and submit!</p>
-  </div>
+      <img src="/assets/images/background.jpg" alt="background" />
 
-  <form className="recipe-form" onSubmit={handleSubmit}>
-    <div className="upload-cover">
-      {coverPhoto ? (
-        <div className="cover-preview">
-          <img src={coverPhoto} alt="Cover" className="cover-photo" />
-          <button
-            type="button"
-            className="remove-cover"
-            onClick={() => setCoverPhoto(null)}
-          >
-            Remove
-          </button>
+      <div className="formContainer">
+        <div className="header">
+          <h1>Share Your Recipe</h1>
+          <p>Upload a recipe to inspire others. Fill out the details and submit!</p>
         </div>
-      ) : (
-        <label className="upload-button">
-          <input type="file" onChange={handlePhotoUpload} required />
-          <span>Upload Cover</span>
-        </label>
-      )}
-    </div>
 
-    <div className="form-group">
-      <label>Name*</label>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter recipe name"
-        required
-      />
-    </div>
+        <form className="recipe-form" onSubmit={handleSubmit}>
+          <div className="upload-cover">
+            {coverPhoto ? (
+              <div className="cover-preview">
+                <img src={coverPhoto} alt="Cover" className="cover-photo" />
+                <button
+                  type="button"
+                  className="remove-cover"
+                  onClick={() => setCoverPhoto(null)}
+                >
+                  Remove
+                </button>
+              </div>
+            ) : (
+              <label className="upload-button">
+                <input type="file" onChange={handlePhotoUpload} required />
+                <span>Upload Cover</span>
+              </label>
+            )}
+          </div>
 
-    <div className="form-group">
-      <label>Description*</label>
-      <textarea
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Enter recipe description"
-        required
-      ></textarea>
-    </div>
+          <div className="form-group">
+            <label>Name*</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter recipe name"
+              required
+            />
+          </div>
 
-    <div className="form-group">
-      <label>Time to Cook (In Minutes)*</label>
-      <input
-        type="number"
-        min="1"
-        max="360"
-        step="1"
-        value={timeToCook}
-        onChange={(e) => setTimeToCook(Number(e.target.value))}
-        required
-      />
-    </div>
+          <div className="form-group">
+            <label>Description*</label>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Enter recipe description"
+              required
+            ></textarea>
+          </div>
 
-    <div className="form-group">
-      <label>Meal Type (Optional)</label>
-      <select value={mealType} onChange={(e) => setMealType(e.target.value)}>
-        <option>Breakfast</option>
-        <option>Lunch</option>
-        <option>Dinner</option>
-        <option>Dessert</option>
-      </select>
-    </div>
+          <div className="form-group">
+            <label>Time to Cook (In Minutes)*</label>
+            <input
+              type="number"
+              min="1"
+              max="360"
+              step="1"
+              value={timeToCook}
+              onChange={(e) => setTimeToCook(Number(e.target.value))}
+              required
+            />
+          </div>
 
-    <div className="form-group">
-      <label>Ethnicity (Optional)</label>
-      <input
-        type="text"
-        value={ethnicity}
-        onChange={(e) => setEthnicity(e.target.value)}
-        placeholder="Enter ethnicity (e.g., Italian, Thai)"
-      />
-    </div>
+          <div className="form-group">
+            <label>Meal Type (Optional)</label>
+            <select value={mealType} onChange={(e) => setMealType(e.target.value)}>
+              <option>Breakfast</option>
+              <option>Lunch</option>
+              <option>Dinner</option>
+              <option>Dessert</option>
+            </select>
+          </div>
 
-    {error && <p className="error-message">{error}</p>}
+          <div className="form-group">
+            <label>Ethnicity (Optional)</label>
+            <input
+              type="text"
+              value={ethnicity}
+              onChange={(e) => setEthnicity(e.target.value)}
+              placeholder="Enter ethnicity (e.g., Italian, Thai)"
+            />
+          </div>
 
-    <button type="submit" className="submit-button">
-      Submit Recipe
-    </button>
-  </form>
+          {error && <p className="error-message">{error}</p>}
 
-  <footer className="footer">
-    <p>“Cooking is an art, share your masterpiece!”</p>
-  </footer>
-</div>
+          <button type="submit" className="submit-button">
+            Submit Recipe
+          </button>
+        </form>
 
+        <footer className="footer">
+          <p>“Cooking is an art, share your masterpiece!”</p>
+        </footer>
+      </div>
     </div>
   );
 };
 
 export default RecipeForm;
+
