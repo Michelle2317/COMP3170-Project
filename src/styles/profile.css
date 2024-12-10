@@ -243,7 +243,82 @@ body {
   width: 100%;
   padding-left: 0;
 }
-  
+@media (max-width: 1024px) {
+  .profileContainer {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .profileCard,
+  .recipesSection {
+    width: 80%;
+  }
+
+  .profileImage {
+    margin-right: 0;
+    position: relative;
+  }
+
+  .profileDetails {
+    position: relative;
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .stories {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .recipesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .profileCard,
+  .recipesSection {
+    width: 100%;
+  }
+
+  .profileImage {
+    width: 100px;
+    height: 100px;
+  }
+
+  .recipesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .story {
+    width: 100%;
+    height: auto;
+  }
+
+  .story img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileName {
+    font-size: 20px;
+  }
+
+  .profileBio {
+    font-size: 12px;
+  }
+
+  .profileCard,
+  .recipesSection {
+    padding: 15px;
+  }
+
+  .remove-button-small {
+    padding: 5px;
+  }
+}
 
 
   

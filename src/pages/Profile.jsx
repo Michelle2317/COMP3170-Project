@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../styles/profile.css";
-import profileImage from "/assets/images/man.jpg";
 import Carousel from "../components/carrosuel/carousel.jsx";
-import Insta from "../../public/assets/images/instagram.jpg";
-import X from "../../public/assets/images/x.jpg";
-import storyOne from "../../public/assets/images/storyOne.jpg";
-import storyTwo from "../../public/assets/images/storyTwo.jpg";
-import storyThree from "../../public/assets/images/storyThree.jpg"
-import storyFour from "../../public/assets/images/storyFour.jpg"
-import profileBackground from "../../public/assets/images/profileBackground.jpg"
+
+// Paths for images in the public folder
+const profileImage = "/assets/images/man.jpg";
+const Insta = "/assets/images/instagram.jpg";
+const X = "/assets/images/x.jpg";
+const storyOne = "/assets/images/storyOne.jpg";
+const storyTwo = "/assets/images/storyTwo.jpg";
+const storyThree = "/assets/images/storyThree.jpg";
+const storyFour = "/assets/images/storyFour.jpg";
+const profileBackground = "/assets/images/profileBackground.jpg";
 
 export default function Profile() {
   const [firstName, setFirstName] = useState("Nathan");
@@ -22,9 +24,11 @@ export default function Profile() {
   const [postCount, setPostCount] = useState(0);
 
   useEffect(() => {
-    const storedRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
-    setRecipes(storedRecipes);
-    setPostCount(storedRecipes.length);
+    if (typeof window !== "undefined") {
+      const storedRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+      setRecipes(storedRecipes);
+      setPostCount(storedRecipes.length);
+    }
   }, []);
 
   const handleRemoveRecipeFromProfile = (index) => {
@@ -75,10 +79,9 @@ export default function Profile() {
 
   return (
     <div className="profileContainer">
-
       <div className="profileCard">
-        <div className="profileHeader" >
-          <img className="headerBackground" src={profileBackground}></img>
+        <div className="profileHeader">
+          <img className="headerBackground" src={profileBackground} alt="Background" />
           <img className="profileImage" src={profileImage} alt="Profile" />
           <div className="profileDetails">
             <h1 className="profileName">
@@ -87,16 +90,14 @@ export default function Profile() {
             <p className="profileBio">{bio}</p>
           </div>
         </div>
-        <h2 class="about">About Me</h2>
-        <p className="aboutText">"Hi there! 👩‍🍳 I'm Chad, a passionate home chef who finds joy in creating magic in the kitchen. Whether it’s perfecting classic recipes, experimenting with bold flavors, or plating up something beautiful, cooking is my love language. 🥘✨
-
-I believe every dish tells a story, and I’m always on the hunt for fresh ingredients, exciting cuisines, and inspiration to make meals that bring people together. From Sunday meal preps to last-minute dinner parties, I thrive on making food that nourishes the soul. 🍝🌿
-
-When I’m not in the kitchen, you can find me exploring local markets, sharing recipes online, or dreaming up my next culinary adventure. Bon appétit!"</p>
+        <h2 className="about">About Me</h2>
+        <p className="aboutText">
+        Hi there! I’m a passionate home chef who loves experimenting in the kitchen and creating delicious meals from scratch. Cooking is my way of bringing people together and sharing the joy of good food. When I’m not trying out new recipes, I enjoy exploring local markets for fresh ingredients and culinary inspiration.
+        </p>
         <h2 className="socialsHeader">Socials</h2>
-        <div className="socials"> 
-        <img src={Insta}></img>
-        <img src={X}></img>
+        <div className="socials">
+          <img src={Insta} alt="Instagram" />
+          <img src={X} alt="X" />
         </div>
         <div className="profileEditSection">
           <h1>Contacts</h1>
@@ -137,20 +138,24 @@ When I’m not in the kitchen, you can find me exploring local markets, sharing 
         <div className="storiesSection">
           <h2>Featured Stories</h2>
           <div className="stories">
-            <div className="story"> <img src={storyOne}></img></div>
-            <div className="story"><img src={storyTwo}></img></div>
-            <div className="story"><img src={storyThree}></img></div>
-            <div className="story"><img src={storyFour}></img></div>
+            <div className="story">
+              <img src={storyOne} alt="Story One" />
+            </div>
+            <div className="story">
+              <img src={storyTwo} alt="Story Two" />
+            </div>
+            <div className="story">
+              <img src={storyThree} alt="Story Three" />
+            </div>
+            <div className="story">
+              <img src={storyFour} alt="Story Four" />
+            </div>
           </div>
         </div>
-      
         <div className="Carosuel">
-               <Carousel/> 
+          <Carousel/>
         </div>
-
-    
       </div>
-
       <div className="recipesSection">
         <h2>Recipes</h2>
         <div className="filter">
@@ -168,4 +173,5 @@ When I’m not in the kitchen, you can find me exploring local markets, sharing 
     </div>
   );
 }
+
 

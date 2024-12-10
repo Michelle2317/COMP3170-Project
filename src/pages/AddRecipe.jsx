@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/recipeForm.css";
-import background from "../../public/assets/images/background.jpg";
+// import background from "../../public/assets/images/background.jpg";
+import background from "/assets/images/background.jpg";
 
 const RecipeForm = () => {
   const [coverPhoto, setCoverPhoto] = useState(null);
