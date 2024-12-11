@@ -29,8 +29,8 @@ export default function Home() {
 	return (
 		<>
 			<div className='heroContainer'>
-				<div>
-					<h1>
+				<div className='heroText'>
+					<h1 className='heading'>
 						Embark on a Culinary Journey of{' '}
 						<br />
 						<span
@@ -64,7 +64,7 @@ export default function Home() {
 					alt='Tiramisu'
 				/>
 				<div className='shareText'>
-					<h2>
+					<h2 className='heading'>
 						Share Your{' '}
 						<span
 							style={{
@@ -92,8 +92,8 @@ export default function Home() {
 				</div>
 			</div>
 
-			<div style={{ marginBottom: '1rem' }}>
-				<h2 className='somethingNew'>
+			<div style={{ marginBottom: '1rem' }}  className='somethingNew'>
+				<h2 className='heading'>
 					Try Something{' '}
 					<span
 						style={{
@@ -104,6 +104,7 @@ export default function Home() {
 					</span>
 				</h2>
 				<MuiLink
+					className='viewMore'
 					component={Link}
 					to='/topPicks'
 					sx={{
@@ -120,7 +121,6 @@ export default function Home() {
 						},
 						display: 'block',
 						marginTop: '0.5rem',
-						marginLeft: '73rem',
 					}}
 				>
 					View More

@@ -255,55 +255,12 @@ export default function Recipes() {
 							)}
 						</FormGroup>
 					</details>
-
-					{/* when time is available */}
-					{/* <details className='filterDetails'>
-						<summary className='filterSummary'>
-							Time
-						</summary>
-						<FormGroup className='filterGroup'>
-							<FormControlLabel
-								control={
-									<Checkbox />
-								}
-								label='less than < 30mins'
-								className='checkBox'
-							/>
-							<FormControlLabel
-								control={
-									<Checkbox />
-								}
-								label='30 mins - 1 hour'
-								className='checkBox'
-							/>
-							<FormControlLabel
-								control={
-									<Checkbox />
-								}
-								label='1 hr - 2 hrs'
-								className='checkBox'
-							/>
-							<FormControlLabel
-								control={
-									<Checkbox />
-								}
-								label='2 hrs - 3 hrs'
-								className='checkBox'
-							/>
-							<FormControlLabel
-								control={
-									<Checkbox />
-								}
-								label='more than > 3hrs'
-								className='checkBox'
-							/>
-						</FormGroup>
-					</details> */}
 				</div>
-
+				
+				<div className='allRecipeLists'>
 				{showRandom && (
 					<div className='RandomRecipes'>
-						<h2>Recipes:</h2>
+						<h2 className='recipesHeading'>Recipes:</h2>
 						{loading ? (
 							<div>
 								Loading
@@ -351,7 +308,7 @@ export default function Recipes() {
 
 				{!showRandom && (
 					<div className='AllRecipes'>
-						<h2>Recipes:</h2>
+						<h2 className='recipesHeading'>Recipes:</h2>
 						{loading ? (
 							<div>
 								Loading
@@ -401,6 +358,7 @@ export default function Recipes() {
 
 				<div className='RecommendedRecipes'>
 					<h3>Recommended Recipes:</h3>
+					<div className='recommendedCardList'>
 					{recommendedRecipes.map(
 						(recipe, index) => (
 							<Link
@@ -430,6 +388,8 @@ export default function Recipes() {
 							</Link>
 						)
 					)}
+					</div>
+				</div>
 				</div>
 			</div>
 		</>

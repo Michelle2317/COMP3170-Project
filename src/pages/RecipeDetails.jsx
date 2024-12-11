@@ -120,7 +120,7 @@ export default function RecipeDetails() {
 			sx={{
 				padding: 3,
 				position: 'relative',
-				marginLeft: '11rem',
+				marginLeft: {lg:'11rem', xs:'1rem'},
 			}}
 		>
 			{/* Recipe Name */}
@@ -235,7 +235,7 @@ export default function RecipeDetails() {
 						variant='h5'
 						gutterBottom
 						sx={{
-							marginLeft: -15,
+							marginLeft: {lg:-15, xs:0},
 							fontWeight: 'bold',
 						}}
 					>
@@ -243,7 +243,7 @@ export default function RecipeDetails() {
 					</Typography>
 					<Typography
 						variant='body1'
-						sx={{ marginLeft: -15 }}
+						sx={{ marginLeft: {lg:-15, xs:0} }}
 					>
 						Calories:{' '}
 						<strong>
@@ -254,7 +254,7 @@ export default function RecipeDetails() {
 					</Typography>
 					<Typography
 						variant='body1'
-						sx={{ marginLeft: -15 }}
+						sx={{ marginLeft: {lg:-15, xs:0} }}
 					>
 						Carbs:{' '}
 						<strong>
@@ -265,7 +265,7 @@ export default function RecipeDetails() {
 					</Typography>
 					<Typography
 						variant='body1'
-						sx={{ marginLeft: -15 }}
+						sx={{ marginLeft: {lg:-15, xs:0} }}
 					>
 						Protein:{' '}
 						<strong>
@@ -276,7 +276,7 @@ export default function RecipeDetails() {
 					</Typography>
 					<Typography
 						variant='body1'
-						sx={{ marginLeft: -15 }}
+						sx={{ marginLeft: {lg:-15, xs:0} }}
 					>
 						Fat:{' '}
 						<strong>
@@ -295,7 +295,11 @@ export default function RecipeDetails() {
 					gap: '1em',
 					justifyContent: 'center',
 					marginBottom: '4rem',
-					marginLeft: '-36.5rem',
+					marginLeft: {
+						lg: '-36.5rem',
+						md: '-24.5rem',
+						xs: '0rem'
+					}
 				}}
 			>
 				<Typography variant='body1'>
@@ -313,7 +317,7 @@ export default function RecipeDetails() {
 			</Box>
 
 			{/* Serving Size Selection */}
-			<Box sx={{ marginBottom: '2rem', marginLeft: '20px' }}>
+			<Box sx={{ marginBottom: '2rem', marginLeft: '0px' }}>
 				<FormControl>
 					<InputLabel id='selectLabel'>
 						Serving Size
@@ -431,7 +435,7 @@ export default function RecipeDetails() {
 						Watch the Recipe Video
 					</Typography>
 					<iframe
-						width='800'
+						width='55%'
 						height='500'
 						src={`https://www.youtube.com/embed/${
 							recipe.strYoutube.split(

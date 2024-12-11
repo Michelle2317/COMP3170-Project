@@ -66,7 +66,7 @@ export default function RandomRecipe() {
 	return (
 		<>
 			<h1 className='PageHeading'>Random Recipes</h1>
-			<div className='RecipeListLayout'>
+			<div className='RandomRecipeListLayout'>
 				{loading ? (
 					<div>Loading Recipes...</div>
 				) : (
