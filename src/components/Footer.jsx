@@ -33,7 +33,7 @@ export default function Footer() {
                             }}
                         >
                             <img
-                                src="./favicon.svg"
+                                src="./assets/images/favicon.svg"
                                 alt="Logo"
                                 style={{
                                     height: '50px',

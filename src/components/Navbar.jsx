@@ -122,7 +122,7 @@ export default function Navbar() {
 					}}
 				>
 					<img
-						src='./favicon.svg'
+						src='./assets/images/favicon.svg'
 						alt='Logo'
 						style={{
 							display: {
@@ -229,8 +229,7 @@ export default function Navbar() {
 												fontSize: '2rem',
 												marginLeft: '0.5rem',
 											}}
-										>
-										</Typography>
+										></Typography>
 									</Link>
 								</Typography>
 							</MenuItem>
