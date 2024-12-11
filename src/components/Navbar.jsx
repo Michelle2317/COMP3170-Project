@@ -122,7 +122,7 @@ export default function Navbar() {
 					}}
 				>
 					<img
-						src='./assets/images/favicon.svg'
+						src='/favicon.svg'
 						alt='Logo'
 						style={{
 							display: {

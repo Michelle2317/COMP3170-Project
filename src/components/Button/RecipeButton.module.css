@@ -1,28 +1,24 @@
 .recipeButton {
-    display: flex;
-    align-items: center;
-    padding: 8px 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    background-color: #f5f5f5;
-    color: #000000;
-    font-size: 14px;
-    font-weight: bold;
-    transition: background-color 0.3s, box-shadow 0.3s;
+	display: flex;
+	align-items: center;
+	padding: 8px 16px;
+	cursor: pointer;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	background-color: var(--deep-pink);
+	color: var(--white);
+	font-size: 14px;
+	font-weight: bold;
+	box-sizing: border-box;
 }
 
 .recipeButton:hover {
-    background-color: #7A1A3D;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    color: #f5f5f5;
-}
-
-.recipeButton:active {
-    background-color: #d6d6d6;
+	border-color: var(--gray);
+	background-color: var(--white);
+	color: var(--deep-pink);
 }
 
 .icon {
-    margin-right: 8px;
-    font-size: 18px;
+	margin-right: 8px;
+	font-size: 18px;
 }

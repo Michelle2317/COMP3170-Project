@@ -176,7 +176,7 @@ body {
 
 .flip-card {
 	perspective: 1000px;
-	width: 310px;
+	width: 300px;
 	height: 270px;
 	cursor: pointer;
 }
@@ -233,4 +233,9 @@ body {
 	justify-content: center;
 	margin-top: 2rem;
 	margin-bottom: 5rem;
+}
+
+/*Top Picks*/
+.topPicksDescription {
+	margin-left: 4rem;
 }

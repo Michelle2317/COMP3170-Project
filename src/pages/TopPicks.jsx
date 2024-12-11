@@ -10,13 +10,12 @@ export default function TopPicks() {
 	const [randomRecipes, setRandomRecipes] = useState([]);
 	const [recommendedRecipes, setRecommendedRecipes] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [strArea, setStrArea] = useState([])
+	const [strArea, setStrArea] = useState([]);
 	const [strCategory, setStrCategory] = useState([]);
 	const [filteredArea, setFilteredArea] = useState([]);
 	const [filteredCategories, setFilteredCategories] = useState([]);
 	const [showRandom, setShowRandom] = useState(true);
 	const [filteredTime, setFilteredTime] = useState([]);
-
 
 	const fetchRandomRecipes = async (num) => {
 		const fetchPromises = [];
@@ -37,7 +36,9 @@ export default function TopPicks() {
 		const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 		const allRecipesData = [];
 		for (const letter of alphabet) {
-			const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`);
+			const response = await fetch(
+				`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`
+			);
 			const data = await response.json();
 			if (data.meals) {
 				allRecipesData.push(...data.meals);
@@ -48,13 +49,17 @@ export default function TopPicks() {
 	}
 
 	const fetchAreas = async () => {
-		const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
+		const response = await fetch(
+			'https://www.themealdb.com/api/json/v1/1/list.php?a=list'
+		);
 		const data = await response.json();
 		setStrArea(data.meals);
 	};
 
 	const fetchCategories = async () => {
-		const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
+		const response = await fetch(
+			'https://www.themealdb.com/api/json/v1/1/list.php?c=list'
+		);
 		const data = await response.json();
 		setStrCategory(data.meals);
 	};
@@ -62,13 +67,59 @@ export default function TopPicks() {
 	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true);
-			const [randomData, recommendedData] = await Promise.all([
-				fetchRandomRecipes(9),
-				fetchRandomRecipes(3),
-				]);
 
-			setRandomRecipes(randomData);
+			const savedRandomRecipes =
+				localStorage.getItem('randomRecipes');
+			const savedRandomTimestamp =
+				localStorage.getItem('recipesTimestamp');
+
+			const currentDate = new Date();
+			const nextMonday = new Date(currentDate);
+			nextMonday.setDate(
+				currentDate.getDate() +
+					(7 - currentDate.getDay())
+			);
+			nextMonday.setHours(0, 0, 0, 0);
+			const timeUntilMonday = nextMonday - currentDate;
+
+			if (savedRandomRecipes && savedRandomTimestamp) {
+				const timeElapsed =
+					Date.now() -
+					parseInt(savedRandomTimestamp, 10);
+				if (timeElapsed < timeUntilMonday) {
+					setRandomRecipes(
+						JSON.parse(savedRandomRecipes)
+					);
+				} else {
+					const newRandomRecipes =
+						await fetchRandomRecipes(9);
+					localStorage.setItem(
+						'randomRecipes',
+						JSON.stringify(newRandomRecipes)
+					);
+					localStorage.setItem(
+						'recipesTimestamp',
+						Date.now().toString()
+					);
+					setRandomRecipes(newRandomRecipes);
+				}
+			} else {
+				const newRandomRecipes =
+					await fetchRandomRecipes(9);
+				localStorage.setItem(
+					'randomRecipes',
+					JSON.stringify(newRandomRecipes)
+				);
+				localStorage.setItem(
+					'recipesTimestamp',
+					Date.now().toString()
+				);
+				setRandomRecipes(newRandomRecipes);
+			}
+
+			const recommendedData = await fetchRandomRecipes(3);
 			setRecommendedRecipes(recommendedData);
+
 			setLoading(false);
 		};
 
@@ -79,71 +130,111 @@ export default function TopPicks() {
 	}, []);
 
 	const filterByTime = (recipes) => {
-        if (filteredTime.length === 0) return recipes;
+		if (filteredTime.length === 0) return recipes;
 
-        return recipes.filter((recipe) => {
-            const time = recipe.strTime ? parseInt(recipe.strTime.split(' ')[0]) : null;
-            if (!time) return false;
+		return recipes.filter((recipe) => {
+			const time = recipe.strTime
+				? parseInt(recipe.strTime.split(' ')[0])
+				: null;
+			if (!time) return false;
 
-            if (filteredTime.includes('under30') && time < 30) return true;
-            if (filteredTime.includes('30to60') && time >= 30 && time <= 60) return true;
-            if (filteredTime.includes('60to120') && time > 60 && time <= 120) return true;
-            if (filteredTime.includes('120to180') && time > 120 && time <= 180) return true;
-            if (filteredTime.includes('over180') && time > 180) return true;
+			if (filteredTime.includes('under30') && time < 30)
+				return true;
+			if (
+				filteredTime.includes('30to60') &&
+				time >= 30 &&
+				time <= 60
+			)
+				return true;
+			if (
+				filteredTime.includes('60to120') &&
+				time > 60 &&
+				time <= 120
+			)
+				return true;
+			if (
+				filteredTime.includes('120to180') &&
+				time > 120 &&
+				time <= 180
+			)
+				return true;
+			if (filteredTime.includes('over180') && time > 180)
+				return true;
 
-            return false;
-        });
-    };
+			return false;
+		});
+	};
 
 	const filterRecipes = (recipes) => {
-		const filteredByArea = filteredArea.length === 0 ? recipes : recipes.filter((recipe) => filteredArea.includes(recipe.strArea));
-	
-		const filteredByCategory = filteredCategories.length === 0 ? filteredByArea : filteredByArea.filter((recipe) => filteredCategories.includes(recipe.strCategory));
-	
+		const filteredByArea =
+			filteredArea.length === 0
+				? recipes
+				: recipes.filter((recipe) =>
+						filteredArea.includes(
+							recipe.strArea
+						)
+				  );
+
+		const filteredByCategory =
+			filteredCategories.length === 0
+				? filteredByArea
+				: filteredByArea.filter((recipe) =>
+						filteredCategories.includes(
+							recipe.strCategory
+						)
+				  );
+
 		const filteredByTime = filterByTime(filteredByCategory);
 
 		return filteredByTime;
-		};
+	};
 
-		const handleAreaChange = (event) => {
-			const value = event.target.value;
-			setFilteredArea((prevSelectedArea) => {
+	const handleAreaChange = (event) => {
+		const value = event.target.value;
+		setFilteredArea((prevSelectedArea) => {
 			if (prevSelectedArea.includes(value)) {
-				return prevSelectedArea.filter((area) => area !== value);
+				return prevSelectedArea.filter(
+					(area) => area !== value
+				);
 			} else {
 				return [...prevSelectedArea, value];
 			}
-			});
-			setShowRandom(false);
-		};
-		
-		const handleCategoryChange = (event) => {
-			const value = event.target.value;
-			setFilteredCategories((prevSelectedCategories) => {
+		});
+		setShowRandom(false);
+	};
+
+	const handleCategoryChange = (event) => {
+		const value = event.target.value;
+		setFilteredCategories((prevSelectedCategories) => {
 			if (prevSelectedCategories.includes(value)) {
-				return prevSelectedCategories.filter((category) => category !== value);
+				return prevSelectedCategories.filter(
+					(category) => category !== value
+				);
 			} else {
 				return [...prevSelectedCategories, value];
 			}
-			});
-			setShowRandom(false);
-		};
-		
-		// const handleTimeChange = (event) => {
-		// 	const value = event.target.value;
-		// 	setFilteredTime((prevSelectedTime) => {
-		// 	if (prevSelectedTime.includes(value)) {
-		// 		return prevSelectedTime.filter((time) => time !== value);
-		// 	} else {
-		// 		return [...prevSelectedTime, value];
-		// 	}
-		// 	});
-		// 	setShowRandom(false);
-		// };
+		});
+		setShowRandom(false);
+	};
+
+	// const handleTimeChange = (event) => {
+	// 	const value = event.target.value;
+	// 	setFilteredTime((prevSelectedTime) => {
+	// 	if (prevSelectedTime.includes(value)) {
+	// 		return prevSelectedTime.filter((time) => time !== value);
+	// 	} else {
+	// 		return [...prevSelectedTime, value];
+	// 	}
+	// 	});
+	// 	setShowRandom(false);
+	// };
 
 	return (
 		<>
 			<h1 className='PageHeading'>Top Picks</h1>
+			<p className='topPicksDescription'>
+				New Recipes Every Monday!
+			</p>
 			<div className='RecipeListLayout'>
 				<div className='Filter'>
 					<h2 className='FilterText'>Filter:</h2>
@@ -151,40 +242,64 @@ export default function TopPicks() {
 						<summary className='filterSummary'>
 							Cuisine
 						</summary>
-						<FormGroup className="filterGroup">
+						<FormGroup className='filterGroup'>
 							{strArea.map((area) => (
 								<FormControlLabel
-									key={area.strArea}
+									key={
+										area.strArea
+									}
 									control={
 										<Checkbox
-											value={area.strArea}
-											onChange={handleAreaChange}
-											checked={filteredArea.includes(area.strArea)}
+											value={
+												area.strArea
+											}
+											onChange={
+												handleAreaChange
+											}
+											checked={filteredArea.includes(
+												area.strArea
+											)}
 										/>
 									}
-									label={area.strArea}
-									className="checkBox"
+									label={
+										area.strArea
+									}
+									className='checkBox'
 								/>
 							))}
 						</FormGroup>
 					</details>
 					<details className='filterDetails'>
-						<summary className='filterSummary'>Category</summary>
-						<FormGroup className="filterGroup">
-						{strCategory.map((category) => (
-							<FormControlLabel
-							key={category.strCategory}
-							control={
-								<Checkbox
-								value={category.strCategory}
-								onChange={handleCategoryChange}
-								checked={filteredCategories.includes(category.strCategory)}
-								/>
-							}
-							label={category.strCategory}
-							className="checkBox"
-							/>
-						))}
+						<summary className='filterSummary'>
+							Category
+						</summary>
+						<FormGroup className='filterGroup'>
+							{strCategory.map(
+								(category) => (
+									<FormControlLabel
+										key={
+											category.strCategory
+										}
+										control={
+											<Checkbox
+												value={
+													category.strCategory
+												}
+												onChange={
+													handleCategoryChange
+												}
+												checked={filteredCategories.includes(
+													category.strCategory
+												)}
+											/>
+										}
+										label={
+											category.strCategory
+										}
+										className='checkBox'
+									/>
+								)
+							)}
 						</FormGroup>
 					</details>
 
@@ -234,85 +349,134 @@ export default function TopPicks() {
 				</div>
 
 				{showRandom && (
-					<div className="RandomRecipes">
+					<div className='RandomRecipes'>
 						<h2>Recipes:</h2>
 						{loading ? (
-						<div>Loading Recipes...</div>
+							<div>
+								Loading
+								Recipes...
+							</div>
 						) : (
-						<div className="recipeGrid">
-							{randomRecipes.map((recipe) => (
-							<Link key={recipe.idMeal} to={`/recipe/${recipe.idMeal}`} style={{ textDecoration: 'none' }}>
-								<RecipeCard
-								title={recipe.strMeal}
-								category={recipe.strCategory}
-								image={recipe.strMealThumb}
-								className="recipe-card"
-								time={recipe.strTime || 'No time specified'}
-								/>
-							</Link>
-							))}
-						</div>
+							<div className='recipeGrid'>
+								{randomRecipes.map(
+									(
+										recipe
+									) => (
+										<Link
+											key={
+												recipe.idMeal
+											}
+											to={`/recipe/${recipe.idMeal}`}
+											style={{
+												textDecoration:
+													'none',
+											}}
+										>
+											<RecipeCard
+												title={
+													recipe.strMeal
+												}
+												category={
+													recipe.strCategory
+												}
+												image={
+													recipe.strMealThumb
+												}
+												className='recipe-card'
+												time={
+													recipe.strTime ||
+													'No time specified'
+												}
+											/>
+										</Link>
+									)
+								)}
+							</div>
 						)}
 					</div>
 				)}
 
-			{!showRandom && (
-				<div className="AllRecipes">
-					<h2>Recipes:</h2>
-					{loading ? (
-					<div>Loading Recipes...</div>
-					) : (
-					<div className="recipeGrid">
-						{filterRecipes(allRecipes).map((recipe) => (
-						<Link key={recipe.idMeal} to={`/recipe/${recipe.idMeal}`} style={{ textDecoration: 'none' }}>
-							<RecipeCard
-							title={recipe.strMeal}
-							category={recipe.strCategory}
-							image={recipe.strMealThumb}
-							className="recipe-card"
-							time={recipe.strTime || 'No time specified'}
-							/>
-						</Link>
-						))}
+				{!showRandom && (
+					<div className='AllRecipes'>
+						<h2>Recipes:</h2>
+						{loading ? (
+							<div>
+								Loading
+								Recipes...
+							</div>
+						) : (
+							<div className='recipeGrid'>
+								{filterRecipes(
+									allRecipes
+								).map(
+									(
+										recipe
+									) => (
+										<Link
+											key={
+												recipe.idMeal
+											}
+											to={`/recipe/${recipe.idMeal}`}
+											style={{
+												textDecoration:
+													'none',
+											}}
+										>
+											<RecipeCard
+												title={
+													recipe.strMeal
+												}
+												category={
+													recipe.strCategory
+												}
+												image={
+													recipe.strMealThumb
+												}
+												className='recipe-card'
+												time={
+													recipe.strTime ||
+													'No time specified'
+												}
+											/>
+										</Link>
+									)
+								)}
+							</div>
+						)}
 					</div>
-					)}
-				</div>
 				)}
 
 				<div className='RecommendedRecipes'>
 					<h3>Recommended Recipes:</h3>
 					{recommendedRecipes.map(
-							(recipe, index) => (
-								<Link
-									key={
-										index
+						(recipe, index) => (
+							<Link
+								key={index}
+								to={`/recipe/${recipe.idMeal}`}
+								style={{
+									textDecoration:
+										'none',
+								}}
+							>
+								<RecipeCard
+									title={
+										recipe.strMeal
 									}
-									to={`/recipe/${recipe.idMeal}`}
-									style={{
-										textDecoration:
-											'none',
-									}}
-								>
-									<RecipeCard
-										title={
-											recipe.strMeal
-										}
-										category={
-											recipe.strCategory
-										}
-										image={
-											recipe.strMealThumb
-										}
-										className='recipe-card'
-										time={
-											recipe.strTime ||
-											'Placeholder Time'
-										}
-									/>
-								</Link>
-							)
+									category={
+										recipe.strCategory
+									}
+									image={
+										recipe.strMealThumb
+									}
+									className='recipe-card'
+									time={
+										recipe.strTime ||
+										'Placeholder Time'
+									}
+								/>
+							</Link>
 						)
-					}
+					)}
 				</div>
 			</div>
 		</>
