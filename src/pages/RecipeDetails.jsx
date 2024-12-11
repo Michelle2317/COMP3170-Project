@@ -61,21 +61,6 @@ export default function RecipeDetails() {
                 {recipe.strMeal}
             </Typography>
 
-            {/* Times Section */}
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    marginTop: '10px',
-                    marginBottom: '20px',
-                    gap: '1em',
-                }}
-            >
-                <Typography variant="body1">Prep Time: {placeholderTimes.prepTime}</Typography>
-                <Typography variant="body1">Cook Time: {placeholderTimes.cookTime}</Typography>
-                <Typography variant="body1">Serving Size: {placeholderTimes.servingSize}</Typography>
-            </Box>
-
             {/* Recipe Buttons */}
             <Box
                 sx={{
@@ -104,7 +89,7 @@ export default function RecipeDetails() {
                         fontSize: '20px',
                         whiteSpace: 'nowrap',
                         zIndex: 2,
-                        border: '3px solid var(--deep-pink)',
+                        border: '2px solid var(--deep-pink)',
                         borderRadius: '8px',
                         maxWidth: 'fit-content',
                     }}
@@ -113,113 +98,132 @@ export default function RecipeDetails() {
                 </Box>
             )}
 
-            {/* Nutrition Facts Section */}
+            {/* Image and Nutrition Facts Section */}
             <Box
                 sx={{
-                    border: '5px solid var(--deep-pink)',
-                    borderRadius: '8px',
-                    padding: '10px',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '1em',
                     marginBottom: '2em',
-                    maxWidth: 'fit-content',
                 }}
             >
-                <Typography variant="h6" gutterBottom>
-                    Nutrition Facts
-                </Typography>
-                <Typography variant="body1">Calories: {placeholderNutrition.calories}</Typography>
-                <Typography variant="body1">Carbs: {placeholderNutrition.carbs}</Typography>
-                <Typography variant="body1">Protein: {placeholderNutrition.protein}</Typography>
-                <Typography variant="body1">Fat: {placeholderNutrition.fat}</Typography>
-            </Box>
-
-            {/* Image Section with Responsiveness */}
-            <Box
-                sx={{
-                    position: 'absolute',
-                    top: '10%',
-                    right: 0,
-                    marginRight: '5em',
-                    zIndex: 1,
-                    '@media (max-width: 1200px)': {
-                        marginRight: '2em',
-                    },
-                    '@media (max-width: 900px)': {
-                        position: 'relative',
-                        top: '0',
-                        right: '0',
-                        marginRight: '0',
-                        marginBottom: '20px',
-                    },
-                }}
-            >
-                <img
-                    src={recipe.strMealThumb}
-                    alt={recipe.strMeal}
-                    style={{
-                        maxWidth: '40em',
-                        maxHeight: '25em',
-                        objectFit: 'contain',
-                        borderRadius: '8px',
-                        border: '5px solid var(--deep-pink)',
-                        marginBottom: '20px',
-                        width: '100%',
-                        height: 'auto',
+                {/* Image Section */}
+                <Box
+                    sx={{
+                        flex: '1 1 40%',
+                        maxWidth: '26em',
                     }}
-                />
+                >
+                    <img
+                        src={recipe.strMealThumb}
+                        alt={recipe.strMeal}
+                        style={{
+                            width: '100%',
+                            height: 'auto',
+                            objectFit: 'contain',
+                            borderRadius: '8px',
+                            border: '3px solid var(--deep-pink)',
+                        }}
+                    />
+                </Box>
+
+                {/* Nutrition Facts Section */}
+                <Box
+                    sx={{
+                        flex: '1 1 40%',
+                        border: '3px solid var(--deep-pink)',
+                        borderRadius: '8px',
+                        padding: '10px',
+                        maxWidth: 'fit-content',
+                    }}
+                >
+                    <Typography variant="h6" gutterBottom>
+                        Nutrition Facts
+                    </Typography>
+                    <Typography variant="body1">Calories: {placeholderNutrition.calories}</Typography>
+                    <Typography variant="body1">Carbs: {placeholderNutrition.carbs}</Typography>
+                    <Typography variant="body1">Protein: {placeholderNutrition.protein}</Typography>
+                    <Typography variant="body1">Fat: {placeholderNutrition.fat}</Typography>
+                </Box>
             </Box>
 
-            {/* Ingredients Section */}
+            {/* Times Section */}
             <Box
                 sx={{
-                    border: '5px solid var(--deep-pink)',
-                    borderRadius: '8px',
-                    padding: '10px',
-                    marginTop: '1em',
-                    maxWidth: 'fit-content',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    marginTop: '10px',
+                    marginBottom: '20px',
+                    gap: '1em',
                 }}
             >
-                <Typography variant="h6" gutterBottom>
-                    Ingredients
-                </Typography>
-                <ul style={{ paddingLeft: '20px' }}>
-                    {Object.keys(recipe)
-                        .filter((key) => key.includes('strIngredient') && recipe[key])
-                        .map((ingredientKey, index) => {
-                            const ingredient = recipe[ingredientKey];
-                            const measure = recipe[`strMeasure${index + 1}`];
-                            return (
-                                <li key={index} style={{ marginBottom: '8px' }}>
-                                    <Typography variant="body1">
-                                        {measure} {ingredient}
-                                    </Typography>
-                                </li>
-                            );
-                        })}
-                </ul>
+                <Typography variant="body1">Prep Time: {placeholderTimes.prepTime}</Typography>
+                <Typography variant="body1">Cook Time: {placeholderTimes.cookTime}</Typography>
+                <Typography variant="body1">Serving Size: {placeholderTimes.servingSize}</Typography>
             </Box>
 
-            {/* Instructions Section */}
+            {/* Ingredients and Instructions Section Side by Side */}
             <Box
                 sx={{
-                    border: '5px solid var(--deep-pink)',
-                    borderRadius: '8px',
-                    padding: '10px',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '2em',
                     marginTop: '2em',
-                    maxWidth: 'fit-content',
                 }}
             >
-                <Typography variant="h6" gutterBottom>
-                    Instructions
-                </Typography>
-                <ul style={{ paddingLeft: '20px' }}>
-                    {recipe.strInstructions
-                        ?.split('\n')
-                        .map((step, index) => (
-                            <li key={index} style={{ marginBottom: '8px' }}>
-                                <Typography variant="body1">{step}</Typography>
-                            </li>
-                        ))}
-                </ul>
+                {/* Ingredients Section */}
+                <Box
+                    sx={{
+                        flex: '1 1 40%',
+                        border: '3px solid var(--deep-pink)',
+                        borderRadius: '8px',
+                        padding: '10px',
+                        maxWidth: 'fit-content',
+                    }}
+                >
+                    <Typography variant="h6" gutterBottom>
+                        Ingredients
+                    </Typography>
+                    <ul style={{ paddingLeft: '20px' }}>
+                        {Object.keys(recipe)
+                            .filter((key) => key.includes('strIngredient') && recipe[key])
+                            .map((ingredientKey, index) => {
+                                const ingredient = recipe[ingredientKey];
+                                const measure = recipe[`strMeasure${index + 1}`];
+                                return (
+                                    <li key={index} style={{ marginBottom: '8px' }}>
+                                        <Typography variant="body1">
+                                            {measure} {ingredient}
+                                        </Typography>
+                                    </li>
+                                );
+                            })}
+                    </ul>
+                </Box>
+
+                {/* Instructions Section */}
+                <Box
+                    sx={{
+                        flex: '1 1 40%',
+                        border: '3px solid var(--deep-pink)',
+                        borderRadius: '8px',
+                        padding: '10px',
+                        maxWidth: '30em',
+                    }}
+                >
+                    <Typography variant="h6" gutterBottom>
+                        Instructions
+                    </Typography>
+                    <ol style={{ paddingLeft: '20px' }}>
+                        {recipe.strInstructions
+                            ?.split('\n')
+                            .map((step, index) => (
+                                <li key={index} style={{ marginBottom: '8px' }}>
+                                    <Typography variant="body1">{step}</Typography>
+                                </li>
+                            ))}
+                    </ol>
+                </Box>
             </Box>
 
             {/* YouTube Video */}
